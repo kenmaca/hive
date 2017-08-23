@@ -6,7 +6,7 @@ import {
   Colors, Sizes
 } from '../Const';
 
-export default class App extends React.Component {
+export default class Loader extends React.Component {
   render() {
     return (
       <View style={styles.container}>
