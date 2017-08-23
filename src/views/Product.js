@@ -25,7 +25,14 @@ export default class Product extends React.Component {
           scrollEventThrottle={16}
           onScroll={event => this.refs.container.onScroll(event)}>
           <View style={[
-            Styles.Card, styles.card, styles.header]}>
+            styles.card, styles.header]}>
+            <Text style={[
+              Styles.Text, Styles.Emphasized, Styles.Title, Styles.Alternate]}>
+              Redeeming (1)
+            </Text>
+          </View>
+          <View style={[
+            Styles.Card, styles.card]}>
             <UppercasedText style={[
               Styles.Text, Styles.Emphasized, Styles.Title]}>
               Cotton Hoodie
