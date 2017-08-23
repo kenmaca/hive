@@ -27,6 +27,9 @@ export const Sizes = {
   OuterFrame: 25,
   InnerFrame: 15,
 
+  // div
+  Divider: 15,
+
   // decor
   RoundedBorders: 5
 };

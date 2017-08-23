@@ -29,7 +29,10 @@ export const Colors = {
   Text: Text,
   AlternateText: Foreground,
   EmphasizedText: Black,
-  SubduedText: DarkGrey
+  SubduedText: DarkGrey,
+
+  // debug
+  Facebook: 'rgb(59, 89, 153)'
 };
 
 export default Colors;

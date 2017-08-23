@@ -11,6 +11,7 @@ import {
 
 // views
 import Loader from './src/views/Loader';
+import Product from './src/views/Product';
 
 export default class App extends React.Component {
   render() {
@@ -21,9 +22,12 @@ export default class App extends React.Component {
             hideNavBar
             key='root'>
             <Scene
-              initial
               key='loader'
               component={Loader} />
+            <Scene
+              initial
+              key='product'
+              component={Product} />
           </Scene>
         </Router>
       </View>

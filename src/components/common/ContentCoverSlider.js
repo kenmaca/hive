@@ -29,6 +29,7 @@ export default class ContentCoverSlider extends React.Component {
 
     // bindings
     this.onScroll = this.onScroll.bind(this);
+    this.renderBackground = this.renderBackground.bind(this);
   }
 
   onScroll(event) {
@@ -42,7 +43,10 @@ export default class ContentCoverSlider extends React.Component {
 
   renderBackground() {
     return this.props.background || (
-      <View style={styles.cover} />
+      <View style={[
+        styles.cover, this.props.backgroundColor && {
+          backgroundColor: this.props.backgroundColor
+        }]} />
     )
   }
 
