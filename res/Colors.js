@@ -23,7 +23,7 @@ export const Colors = {
 
   // buttons
   PositiveButton: Primary,
-  NegativeButton: Red,
+  NegativeButton: Black,
 
   // text
   Text: Text,

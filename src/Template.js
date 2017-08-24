@@ -1,15 +1,18 @@
 import React from 'react';
 import {
-  StyleSheet, View
+  StyleSheet, View, Platform, StatusBar
 } from 'react-native';
 import {
   Colors, Sizes
 } from '../Const';
 import {
+  Actions
+} from 'react-native-router-flux';
+import {
   Constants, Components
 } from 'expo';
 
-export default class App extends React.Component {
+export default class TemplateChangeMe extends React.Component {
   render() {
     return (
       <View style={styles.container}>

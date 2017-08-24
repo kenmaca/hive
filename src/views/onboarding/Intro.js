@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    margin: Sizes.InnerFrame
+    margin: Sizes.InnerFrame,
+    marginBottom: Sizes.InnerFrame / 2
   },
 
   content: {

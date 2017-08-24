@@ -31,7 +31,10 @@ export const Sizes = {
   Divider: 15,
 
   // decor
-  RoundedBorders: 5
+  RoundedBorders: 5,
+
+  // buttons
+  SquareButton: 50
 };
 
 export default Sizes;
