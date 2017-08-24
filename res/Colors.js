@@ -12,6 +12,8 @@ let Text = Black;
 let Primary = '#1DCAFF';
 let Secondary = '#4AD4FF';
 let Transparent = 'rgba(255, 255, 255, 0)';
+let DarkTransparent = 'rgba(0, 0, 0, 0)';
+let Shadow = 'rgba(0, 0, 0, 0.5)';
 
 export const Colors = {
 
@@ -22,6 +24,8 @@ export const Colors = {
   SubduedForeground: Grey,
   MenuBackground: Black,
   Transparent: Transparent,
+  DarkTransparent: DarkTransparent,
+  Shadow: Shadow,
 
   // buttons
   PositiveButton: Primary,
