@@ -14,6 +14,7 @@ import {
 } from 'expo';
 
 // components
+import * as Animatable from 'react-native-animatable';
 import UppercasedText from '../components/common/UppercasedText';
 import Carousel, {
   Pagination
@@ -47,13 +48,16 @@ export default class Main extends React.Component {
           <View style={styles.header}>
 
           </View>
-          <Carousel
-            data={[{}, {}, {}, {}, {}]}
-            renderItem={this._renderCard}
-            sliderWidth={Sizes.Width}
-            itemWidth={Sizes.Width * 0.8}
-            onSnapToItem={i => this.setState({
-              activeCard: i})} />
+          <Animatable.View
+            animation='bounceInDown'>
+            <Carousel
+              data={[{}, {}, {}, {}, {}]}
+              renderItem={this._renderCard}
+              sliderWidth={Sizes.Width}
+              itemWidth={Sizes.Width * 0.8}
+              onSnapToItem={i => this.setState({
+                activeCard: i})} />
+          </Animatable.View>
           <Pagination
             dotsLength={5}
             activeDotIndex={this.state.activeCard}

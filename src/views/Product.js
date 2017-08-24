@@ -56,9 +56,6 @@ export default class Product extends React.Component {
               <Text style={[Styles.Text, Styles.BottomHalfSpacing]}>
                 採用優質手工編織的Supima棉製成，這款連帽衫採用Facebook風格化的“f”作為標誌性藍色的右胸上的繡花標誌。
               </Text>
-              <Text style={Styles.Text}>
-                Made with premium hand-woven Supima cotton, this hoodie features Facebook's stylized "f" as an embroidered logo on the right chest in their signature blue color.
-              </Text>
             </View>
             <Image
               style={[
