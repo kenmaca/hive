@@ -3,34 +3,46 @@ import {
   StyleSheet, Text, View
 } from 'react-native';
 import {
-  Router, Scene, Actions
+  Router, Scene, Actions, Stack, Overlay, Modal
 } from 'react-native-router-flux';
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
 import {
   Colors, Sizes
 } from './src/Const';
 
 // views
 import Loader from './src/views/Loader';
+import OnboardingIntro from './src/views/onboarding/Intro';
 import Product from './src/views/Product';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Router>
-          <Scene
+      <Router getSceneStyle={() => ({
+        backgroundColor: Colors.MenuBackground,
+        shadowOpacity: 1,
+        shadowRadius: 3})}>
+        <Modal hideNavBar
+         transitionConfig={() => ({screenInterpolator: CardStackStyleInterpolator.forFadeFromBottomAndroid})}>
+          <Stack
             hideNavBar
             key='root'>
             <Scene
+              initial
               key='loader'
               component={Loader} />
             <Scene
-              initial
+              key='onboardingIntro'
+              component={OnboardingIntro}
+              transitionConfig={
+                () => ({
+                  screenInterpolator: CardStackStyleInterpolator.forFadeFromBottomAndroid})} />
+            <Scene
               key='product'
               component={Product} />
-          </Scene>
-        </Router>
-      </View>
+          </Stack>
+        </Modal>
+      </Router>
     );
   }
 }

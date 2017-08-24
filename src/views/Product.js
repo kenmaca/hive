@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet, View, Text, Image, ScrollView
+  StyleSheet, View, Text, Image, ScrollView, Platform, StatusBar
 } from 'react-native';
 import {
   Colors, Sizes, Styles
@@ -14,11 +14,16 @@ import {
 } from 'react-native-elements';
 
 export default class Product extends React.Component {
+  componentDidMount() {
+    Platform.OS === 'ios' && StatusBar.setBarStyle('light-content', true);
+    Platform.OS === 'ios' && StatusBar.setHidden(false, 'slide');
+  }
+
   render() {
     return (
       <ContentCoverSlider
         ref='container'
-        title='Cotton Hoodie'
+        title='棉連帽衫 Cotton Hoodie'
         backgroundColor={Colors.Facebook}
         backAction={false}>
         <ScrollView
@@ -28,18 +33,21 @@ export default class Product extends React.Component {
             styles.card, styles.header]}>
             <Text style={[
               Styles.Text, Styles.Emphasized, Styles.Title, Styles.Alternate]}>
-              Redeeming (1)
+              彌補的 Redeeming (1)
             </Text>
           </View>
           <View style={[
             Styles.Card, styles.card]}>
             <UppercasedText style={[
               Styles.Text, Styles.Emphasized, Styles.Title]}>
-              Cotton Hoodie
+              棉連帽衫 Cotton Hoodie
             </UppercasedText>
             <UppercasedText style={[Styles.Text, Styles.SmallText, Styles.BottomSpacing]}>
               from Facebook, Inc.
             </UppercasedText>
+            <Text style={[Styles.Text, Styles.BottomHalfSpacing]}>
+              採用優質手工編織的Supima棉製成，這款連帽衫採用Facebook風格化的“f”作為標誌性藍色的右胸上的繡花標誌。
+            </Text>
             <Text style={Styles.Text}>
               Made with premium hand-woven Supima cotton, this hoodie features Facebook's stylized "f" as an embroidered logo on the right chest in their signature blue color.
             </Text>

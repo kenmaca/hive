@@ -5,6 +5,9 @@ import {
 import {
   Colors, Sizes
 } from '../Const';
+import {
+  Constants, Components
+} from 'expo';
 
 export default class App extends React.Component {
   render() {
