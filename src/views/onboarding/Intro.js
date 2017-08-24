@@ -60,7 +60,7 @@ export default class Intro extends React.Component {
               size: Sizes.Text
             }}
             title='註冊一個新帳號 Register'
-            onPress={Actions.main}
+            onPress={Actions.signupForm}
             backgroundColor={Colors.PositiveButton}
             textStyle={[Styles.Text, Styles.Emphasized, Styles.Alternate]}
             buttonStyle={[styles.field, styles.fieldSpacing]} />

@@ -17,6 +17,9 @@ import UppercasedText from '../components/common/UppercasedText';
 import {
   Button
 } from 'react-native-elements';
+import {
+  Actions
+} from 'react-native-router-flux';
 
 // custom animations
 let AnimatedTouchableOpacity = Animatable.createAnimatableComponent(TouchableOpacity);
@@ -81,6 +84,7 @@ export default class Product extends React.Component {
                 </UppercasedText>
               </TouchableOpacity>
               <TouchableOpacity
+                onPress={Actions.addressForm}
                 style={[styles.SquareButton, styles.positive]}>
                 <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
                   把它寄給我 Accept
