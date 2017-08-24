@@ -5,7 +5,7 @@ import {
 import {
   Router, Scene, Actions, Stack, Overlay, Modal
 } from 'react-native-router-flux';
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
 import {
   Colors, Sizes
 } from './src/Const';
@@ -13,6 +13,7 @@ import {
 // views
 import Loader from './src/views/Loader';
 import OnboardingIntro from './src/views/onboarding/Intro';
+import Main from './src/views/Main';
 import Product from './src/views/Product';
 
 export default class App extends React.Component {
@@ -33,10 +34,10 @@ export default class App extends React.Component {
               component={Loader} />
             <Scene
               key='onboardingIntro'
-              component={OnboardingIntro}
-              transitionConfig={
-                () => ({
-                  screenInterpolator: CardStackStyleInterpolator.forFadeFromBottomAndroid})} />
+              component={OnboardingIntro} />
+            <Scene
+              key='main'
+              component={Main} />
             <Scene
               key='product'
               component={Product} />

@@ -33,8 +33,7 @@ export default class Product extends React.Component {
         <ContentCoverSlider
           ref='container'
           title='棉連帽衫 Cotton Hoodie'
-          backgroundColor={Colors.Facebook}
-          backAction={false}>
+          backgroundColor={Colors.Facebook}>
           <ScrollView
             scrollEventThrottle={16}
             onScroll={event => this.refs.container.onScroll(event)}>
@@ -160,6 +159,6 @@ const styles = StyleSheet.create({
   },
 
   positive: {
-    backgroundColor: Colors.PositiveButton
+    backgroundColor: Colors.Facebook
   }
 });
