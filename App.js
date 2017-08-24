@@ -5,7 +5,7 @@ import {
 import {
   Router, Scene, Actions, Stack, Overlay, Modal
 } from 'react-native-router-flux';
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
 import {
   Colors, Sizes
 } from './src/Const';
@@ -15,6 +15,8 @@ import Loader from './src/views/Loader';
 import OnboardingIntro from './src/views/onboarding/Intro';
 import Main from './src/views/Main';
 import Product from './src/views/Product';
+import SignupForm from './src/views/SignupForm';
+import AddressForm from './src/views/AddressForm';
 
 export default class App extends React.Component {
   render() {
@@ -41,6 +43,12 @@ export default class App extends React.Component {
             <Scene
               key='product'
               component={Product} />
+            <Scene
+              key='signupForm'
+              component={SignupForm} />
+            <Scene
+              key='addressForm'
+              component={AddressForm} />
           </Stack>
         </Modal>
       </Router>
