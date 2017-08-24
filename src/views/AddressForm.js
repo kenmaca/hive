@@ -18,15 +18,14 @@ import {
   Actions
 } from 'react-native-router-flux';
 
-export default class SignupForm extends Component {
+export default class AddressForm extends Component {
 
   render() {
     return (
       <View style={styles.container}>
         <ContentCoverSlider
           ref='container'
-          title='Profile'
-          backAction={false}>
+          title='Address'>
           <ScrollView
             scrollEventThrottle={16}
             onScroll={event => this.refs.container.onScroll(event)}>
@@ -36,7 +35,7 @@ export default class SignupForm extends Component {
               <Text style={[
                   Styles.Text, Styles.Emphasized, Styles.Title, Styles.Alternate
                 ]}>
-                註冊 Create a Hive Account
+                填寫地址 Enter your Address
               </Text>
             </View>
             <View style={[Styles.Card, styles.card]}>
@@ -60,14 +59,11 @@ export default class SignupForm extends Component {
                 size: Sizes.Text
               }}
               iconRight
-              title='註冊 Sign Up'
+              title='保存 Save'
               onPress={Actions.main}
               backgroundColor={Colors.PositiveButton}
               textStyle={[Styles.Text, Styles.Emphasized, Styles.Alternate]}
               buttonStyle={[styles.field, styles.fieldSpacing]} />
-            <Text style={[Styles.Text, styles.terms]}>
-              By clicking "Sign Up", you agree to Hivemade's Terms and Conditions and Privacy Policy
-            </Text>
           </ScrollView>
         </ContentCoverSlider>
       </View>
