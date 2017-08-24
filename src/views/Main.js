@@ -10,7 +10,7 @@ import {
   Actions
 } from 'react-native-router-flux';
 import {
-  Constants, Components
+  Constants, Components, LinearGradient
 } from 'expo';
 
 // components
@@ -35,8 +35,23 @@ export default class Main extends React.Component {
     return (
       <TouchableOpacity
         onPress={Actions.product}>
-        <View style={styles.productCard}>
-        </View>
+        <Image
+          source={{uri: 'https://dtpmhvbsmffsz.cloudfront.net/posts/2016/08/05/57a50f254e95a33a7d0085fe/m_57a50f84c2845687140082e4.jpg'}}
+          style={styles.productCard}>
+          <LinearGradient
+            colors={[Colors.Shadow, Colors.DarkTransparent]}
+            style={styles.productCardHeader}>
+            <View style={styles.productCardHeaderTitle}>
+              <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
+                Cotton Hoodie
+              </UppercasedText>
+            </View>
+            <View style={styles.productCardHeaderValue}>
+              <Text style={[Styles.Text, Styles.Title, Styles.Emphasized]}>6</Text>
+              <UppercasedText style={[Styles.Text, Styles.SmallText]}>Cards</UppercasedText>
+            </View>
+          </LinearGradient>
+        </Image>
       </TouchableOpacity>
     );
   }
@@ -147,7 +162,8 @@ const styles = StyleSheet.create({
   productCard: {
     width: Sizes.Width * 0.8,
     height: Sizes.Height * 0.6,
-    backgroundColor: Colors.Foreground
+    backgroundColor: Colors.Foreground,
+    justifyContent: 'space-between'
   },
 
   paginationDot: {
@@ -156,5 +172,23 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: 8,
     backgroundColor: 'rgba(255, 255, 255, 0.92)'
+  },
+
+  productCardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+
+  productCardHeaderTitle: {
+    margin: Sizes.InnerFrame
+  },
+
+  productCardHeaderValue: {
+    width: 60,
+    height: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.Foreground
   }
 });

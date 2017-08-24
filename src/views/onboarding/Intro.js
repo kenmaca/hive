@@ -15,6 +15,7 @@ import {
 // components
 import * as Animatable from 'react-native-animatable';
 import UppercasedText from '../../components/common/UppercasedText';
+import Logo from '../../components/common/Logo';
 import {
   Button
 } from 'react-native-elements';
@@ -40,6 +41,9 @@ export default class Intro extends React.Component {
           animation='bounceInUp'
           delay={1500}
           style={styles.content}>
+          <View style={[styles.card]}>
+            <Logo />
+          </View>
           <View style={[Styles.Card, styles.card]}>
             <UppercasedText style={[
               Styles.Text, Styles.Emphasized, Styles.Title, Styles.BottomSpacing]}>
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: Sizes.Height / 10
+    bottom: Sizes.OuterFrame
   },
 
   field: {
