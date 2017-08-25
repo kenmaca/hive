@@ -2,11 +2,14 @@ import React, {
   Component
 } from 'react';
 import {
-  View, StyleSheet, ScrollView, Text, TextInput
+  View, StyleSheet, ScrollView, Text, TextInput, Image, TouchableOpacity
 } from 'react-native';
 import {
   Sizes, Colors, Styles
 } from '../Const';
+import {
+  LinearGradient
+} from 'expo';
 
 //components
 import ContentCoverSlider from '../components/common/ContentCoverSlider';
@@ -14,11 +17,50 @@ import {
   Button
 } from 'react-native-elements';
 import FormInputField from '../components/forms/FormInputField';
+import FormPicker from '../components/forms/FormPicker';
+import PickerList from '../components/forms/PickerList';
 import {
   Actions
 } from 'react-native-router-flux';
+import Modal from 'react-native-modalbox';
 
 export default class AddressForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      changed: false,
+      province: '广东省',
+      city: '广州市',
+      district: '海珠区'
+    }
+  }
+
+  change = () => {
+    this.setState({
+      changed: true
+    })
+  }
+
+  changeProvince = (val) => {
+    this.setState({
+      province: val,
+      changed: true
+    })
+  }
+
+  changeCity = (val) => {
+    this.setState({
+      city: val,
+      changed: true
+    })
+  }
+
+  changeDistrict = (val) => {
+    this.setState({
+      district: val,
+      changed: true
+    })
+  }
 
   render() {
     return (
@@ -40,19 +82,36 @@ export default class AddressForm extends Component {
             </View>
             <View style={[Styles.Card, styles.card]}>
               <FormInputField
-                placeholder='Name'/>
+                placeholder='街道/門牌 Street and Apt Number'/>
+              <TouchableOpacity
+                onPress={() => this.refs.picker.open()}>
+                <FormPicker
+                  province={this.state.province}
+                  city={this.state.city}
+                  district={this.state.district}
+                  changed={this.state.changed}
+                  iconRight='arrow-drop-down'/>
+              </TouchableOpacity>
               <FormInputField
-                placeholder='Email'
-                iconRight='email'/>
-              <FormInputField
-                placeholder='Password'
-                secureTextEntry
-                iconRight='lock'/>
-              <FormInputField
-                placeholder='Confirm Password'
-                secureTextEntry
-                iconRight='lock'/>
+                placeholder='郵編 Postal Code'
+                keyboardType='number-pad'
+                maxLength={6}/>
             </View>
+            <Image
+              source={{
+                uri: 'https://c2.staticflickr.com/8/7585/26457494503_7f050b669f_o.png'
+              }}
+              style={[Styles.Card, {marginBottom: 20}]}>
+              <Text style={[
+                  Styles.Text, Styles.Emphasized, Styles.Title,
+                  Styles.BottomSpacing, Styles.Alternate
+                ]}>
+                Location
+              </Text>
+              <Text style={[Styles.Text, Styles.Alternate]}>
+                {this.state.changed ? '街道/門牌, ' + this.state.district + ' ' + this.state.city + ' ' + this.state.province + ', 510000': ''}
+              </Text>
+            </Image>
             <Button
               icon={{
                 name: 'arrow-forward',
@@ -60,12 +119,28 @@ export default class AddressForm extends Component {
               }}
               iconRight
               title='保存 Save'
-              onPress={Actions.main}
               backgroundColor={Colors.PositiveButton}
               textStyle={[Styles.Text, Styles.Emphasized, Styles.Alternate]}
               buttonStyle={[styles.field, styles.fieldSpacing]} />
           </ScrollView>
         </ContentCoverSlider>
+        <Modal
+          ref='picker'
+          position='bottom'
+          backdropOpacity={0.7}
+          style={[styles.modal]}>
+          <View style={[Styles.EqualColumns]}>
+            <PickerList
+              change={this.change.bind(this)}
+              changed={this.state.changed}
+              changeProvince={this.changeProvince.bind(this)}
+              province={this.state.province}
+              changeCity={this.changeCity.bind(this)}
+              city={this.state.city}
+              changeDistrict={this.changeDistrict.bind(this)}
+              district={this.state.district}/>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -108,5 +183,13 @@ const styles = StyleSheet.create({
   terms: {
     margin: Sizes.InnerFrame,
     color: Colors.SubduedText
+  },
+
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: Sizes.Height / 4,
+    width: Sizes.Width - 20,
+    backgroundColor: Colors.Transparent
   }
 });

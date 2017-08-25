@@ -60,7 +60,8 @@ export default class FormInputField extends Component {
               })}
               onChangeText={(text) => this.setState({
                 input: text
-              }) && this.refs.textInputTitle.slideOutUp(1000)} />
+              }) && this.refs.textInputTitle.slideOutUp(1000)}
+              {...this.props} />
             {
               this.props.iconRight &&
               <Icon
