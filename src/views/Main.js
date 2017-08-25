@@ -16,6 +16,7 @@ import {
 // components
 import * as Animatable from 'react-native-animatable';
 import UppercasedText from '../components/common/UppercasedText';
+import Button from '../components/common/Button';
 import Carousel, {
   Pagination
 } from 'react-native-snap-carousel';
@@ -99,10 +100,19 @@ export default class Main extends React.Component {
             </View>
           </View>
           <View style={[Styles.Card, Styles.EqualColumns, styles.buttons]}>
-            <Icon name='new-releases' />
-            <Icon name='style' />
-            <Icon name='local-shipping' />
-            <Icon name='tag-faces' />
+            <Button
+              label='瀏覽'
+              icon='search' />
+            <Button
+              label='獲得更多的卡'
+              icon='style' />
+            <Button
+              label='出貨量'
+              icon='local-shipping'
+              onPress={Actions.trackingList} />
+            <Button
+              label='設置'
+              icon='tag-faces' />
           </View>
           <View style={styles.statusBar}>
             <Text style={[Styles.Text, Styles.SmallText, Styles.Center]}>

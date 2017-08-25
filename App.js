@@ -5,7 +5,7 @@ import {
 import {
   Router, Scene, Actions, Stack, Overlay, Modal
 } from 'react-native-router-flux';
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
 import {
   Colors, Sizes
 } from './src/Const';
@@ -17,6 +17,7 @@ import Main from './src/views/Main';
 import Product from './src/views/Product';
 import SignupForm from './src/views/SignupForm';
 import AddressForm from './src/views/AddressForm';
+import TrackingList from './src/views/tracking/List';
 
 export default class App extends React.Component {
   render() {
@@ -49,6 +50,9 @@ export default class App extends React.Component {
             <Scene
               key='addressForm'
               component={AddressForm} />
+            <Scene
+              key='trackingList'
+              component={TrackingList} />
           </Stack>
         </Modal>
       </Router>
