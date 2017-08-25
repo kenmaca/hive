@@ -18,6 +18,7 @@ import Product from './src/views/Product';
 import SignupForm from './src/views/SignupForm';
 import AddressForm from './src/views/AddressForm';
 import TrackingList from './src/views/tracking/List';
+import BrowseList from './src/views/browse/List';
 
 export default class App extends React.Component {
   render() {
@@ -53,6 +54,9 @@ export default class App extends React.Component {
             <Scene
               key='trackingList'
               component={TrackingList} />
+            <Scene
+              key='browseList'
+              component={BrowseList} />
           </Stack>
         </Modal>
       </Router>

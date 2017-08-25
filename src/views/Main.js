@@ -102,7 +102,8 @@ export default class Main extends React.Component {
           <View style={[Styles.Card, Styles.EqualColumns, styles.buttons]}>
             <Button
               label='瀏覽'
-              icon='search' />
+              icon='search'
+              onPress={Actions.browseList} />
             <Button
               label='獲得更多的卡'
               icon='style' />
