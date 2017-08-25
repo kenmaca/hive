@@ -23,7 +23,8 @@ export default class Button extends React.Component {
     return (
       <TouchableOpacity
         onPress={this.props.onPress}
-        style={styles.container}>
+        style={[styles.container, this.props.right && {
+          marginRight: this.props.right}]}>
         <View style={[
           styles.icon,
           this.props.size && {
@@ -33,13 +34,14 @@ export default class Button extends React.Component {
             type={this.props.type}
             name={this.props.icon || 'new-releases'}
             size={this.props.size || 25}
-            color={this.props.color}
-            style={Styles.BottomHalfSpacing} />
+            color={this.props.color} />
         </View>
-        <UppercasedText
-          style={[Styles.Text, Styles.SmallText, Styles.Emphasized, styles.label]}>
-          {this.props.label || 'Button'}
-        </UppercasedText>
+        {this.props.label && (<UppercasedText
+          style={[Styles.Text, Styles.SmallText, Styles.Emphasized,
+            styles.label, this.props.color && {
+              color: this.props.color}]}>
+          {this.props.label}
+        </UppercasedText>)}
       </TouchableOpacity>
     );
   }
@@ -57,5 +59,9 @@ const styles = StyleSheet.create({
     width: 37.5,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+
+  label: {
+    marginTop: Sizes.Divider / 2
   }
 });

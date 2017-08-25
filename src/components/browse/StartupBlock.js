@@ -15,6 +15,9 @@ import {
 // components
 import * as Animatable from 'react-native-animatable';
 
+// const
+const UNIT_BLOCK_WIDTH = Sizes.Width * 2 / 3;
+
 export default class StartupBlock extends React.Component {
   render() {
     return (
@@ -22,9 +25,12 @@ export default class StartupBlock extends React.Component {
         animation='fadeInUp'
         delay={Math.floor((Math.random() * 500) + 1)}>
         <Image
+          resizeMode='cover'
           source={this.props.cover && {uri: this.props.cover}}
-          style={styles.container}>
-
+          style={[
+            styles.container,
+            this.props.scale && {
+              width: UNIT_BLOCK_WIDTH * this.props.scale}]}>
         </Image>
       </Animatable.View>
     );
@@ -34,7 +40,7 @@ export default class StartupBlock extends React.Component {
 const styles = StyleSheet.create({
   container: {
     height: Sizes.Width / 3,
-    width: Sizes.Width * 2 / 3,
+    width: UNIT_BLOCK_WIDTH,
     marginRight: Sizes.InnerFrame,
     marginBottom: Sizes.InnerFrame,
     backgroundColor: Colors.Background
