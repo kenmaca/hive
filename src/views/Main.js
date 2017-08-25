@@ -65,12 +65,14 @@ export default class Main extends React.Component {
 
           </View>
           <Animatable.View
+            style={styles.carouselWrapper}
             animation='bounceInDown'>
             <Carousel
               data={[{}, {}, {}, {}, {}]}
               renderItem={this._renderCard}
               sliderWidth={Sizes.Width}
               itemWidth={Sizes.Width * 0.8}
+              slideStyle={styles.carouselWrapper}
               onSnapToItem={i => this.setState({
                 activeCard: i})} />
           </Animatable.View>
@@ -141,6 +143,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Accent
   },
 
+  carouselWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
   statusContent: {
     alignItems: 'center'
   },
@@ -171,8 +179,8 @@ const styles = StyleSheet.create({
   },
 
   productCard: {
+    flex: 1,
     width: Sizes.Width * 0.8,
-    height: Sizes.Height * 0.6,
     backgroundColor: Colors.Foreground,
     justifyContent: 'space-between'
   },
