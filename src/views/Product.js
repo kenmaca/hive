@@ -36,6 +36,11 @@ export default class Product extends React.Component {
         <ContentCoverSlider
           ref='container'
           title='棉連帽衫 Cotton Hoodie'
+          background={(
+            <Image
+              source={{uri: 'https://scontent.fhkg4-2.fna.fbcdn.net/v/t31.0-8/11119421_892287970809455_1392213191940888413_o.jpg?oh=a7c1a6f3b17c427ab8e51b4dc8bc1eea&oe=5A25805F'}}
+              style={styles.cover} />
+          )}
           backgroundColor={Colors.Facebook}>
           <ScrollView
             scrollEventThrottle={16}
@@ -160,6 +165,10 @@ const styles = StyleSheet.create({
   },
 
   positive: {
-    backgroundColor: Colors.Facebook
+    backgroundColor: Colors.PositiveButton
+  },
+
+  cover: {
+    height: 200
   }
 });

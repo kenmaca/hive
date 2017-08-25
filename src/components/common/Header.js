@@ -19,7 +19,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Logo color={Colors.LightShadow} size={30} />
+        <Logo color={this.props.color || Colors.LightShadow} size={30} />
       </View>
     );
   }
@@ -27,8 +27,8 @@ export default class Header extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingVertical: Sizes.InnerFrame / 3 + 3,
+    marginTop: Constants.statusBarHeight,
+    paddingVertical: Sizes.InnerFrame,
     paddingHorizontal: Sizes.OuterFrame,
     alignItems: 'center',
     justifyContent: 'center'

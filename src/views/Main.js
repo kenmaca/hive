@@ -62,7 +62,6 @@ export default class Main extends React.Component {
 
     // set statusbar
     Platform.OS === 'ios' && StatusBar.setBarStyle('light-content', true);
-    Platform.OS === 'ios' && StatusBar.setHidden(true, 'slide');
 
     return (
       <View style={styles.container}>
@@ -70,7 +69,9 @@ export default class Main extends React.Component {
           <Header />
           <Animatable.View
             style={styles.carouselWrapper}
-            animation='bounceInDown'>
+            animation='slideInDown'
+            duration={200}
+            delay={300}>
             <Carousel
               data={[{}, {}, {}, {}, {}]}
               renderItem={this._renderCard}
