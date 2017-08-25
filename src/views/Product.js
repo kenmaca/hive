@@ -29,8 +29,7 @@ export default class Product extends React.Component {
 
     // set statusbar
     Platform.OS === 'ios' && StatusBar.setBarStyle('light-content', true);
-    Platform.OS === 'ios' && StatusBar.setHidden(false, 'slide');
-
+    
     return (
       <View style={styles.container}>
         <ContentCoverSlider

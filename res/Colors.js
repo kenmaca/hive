@@ -5,10 +5,10 @@ let Foreground = '#FFFFFF';
 let Black = '#000000';
 let Grey = '#F5F5F5';
 let DarkGrey = '#AAAAAA';
-let NearBlack = '#111111';
+let NearBlack = '#1E1E1E';
 let Red = '#FF0000';
 let Gold = '#C5B358';
-let Text = Black;
+let Text = NearBlack;
 let Primary = '#1DCAFF';
 let Secondary = '#4AD4FF';
 let Transparent = 'rgba(255, 255, 255, 0)';
@@ -23,7 +23,7 @@ export const Colors = {
   Foreground: Foreground,
   Accent: Gold,
   SubduedForeground: Grey,
-  MenuBackground: Black,
+  MenuBackground: NearBlack,
   Transparent: Transparent,
   DarkTransparent: DarkTransparent,
   Shadow: Shadow,
