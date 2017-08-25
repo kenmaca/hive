@@ -18,6 +18,9 @@ export default class Logo extends React.Component {
           this.props.size && {
             width: this.props.size,
             height: this.props.size
+          },
+          this.props.color && {
+            tintColor: this.props.color
           }
         ]} />
     );

@@ -17,6 +17,7 @@ import {
 import * as Animatable from 'react-native-animatable';
 import UppercasedText from '../components/common/UppercasedText';
 import Button from '../components/common/Button';
+import Header from '../components/common/Header';
 import Carousel, {
   Pagination
 } from 'react-native-snap-carousel';
@@ -58,12 +59,15 @@ export default class Main extends React.Component {
   }
 
   render() {
+
+    // set statusbar
+    Platform.OS === 'ios' && StatusBar.setBarStyle('light-content', true);
+    Platform.OS === 'ios' && StatusBar.setHidden(true, 'slide');
+
     return (
       <View style={styles.container}>
         <View style={styles.carouselContainer}>
-          <View style={styles.header}>
-
-          </View>
+          <Header />
           <Animatable.View
             style={styles.carouselWrapper}
             animation='bounceInDown'>
@@ -104,18 +108,21 @@ export default class Main extends React.Component {
           <View style={[Styles.Card, Styles.EqualColumns, styles.buttons]}>
             <Button
               label='瀏覽'
-              icon='search'
+              type='entypo'
+              icon='shop'
               onPress={Actions.browseList} />
             <Button
               label='獲得更多的卡'
-              icon='style' />
+              type='entypo'
+              icon='documents' />
             <Button
               label='出貨量'
               icon='local-shipping'
               onPress={Actions.trackingList} />
             <Button
               label='設置'
-              icon='tag-faces' />
+              type='entypo'
+              icon='sound-mix' />
           </View>
           <View style={styles.statusBar}>
             <Text style={[Styles.Text, Styles.SmallText, Styles.Center]}>
@@ -134,17 +141,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Accent
   },
 
-  header: {
-    padding: Sizes.OuterFrame
-  },
-
   carouselContainer: {
     flex: 1,
     backgroundColor: Colors.Accent
   },
 
   carouselWrapper: {
-    flex: 1,
+    flex: 6,
     alignItems: 'center',
     justifyContent: 'center'
   },
