@@ -21,6 +21,10 @@ export const Styles = {
     fontSize: Sizes.H3
   },
 
+  Oversized: {
+    fontSize: Sizes.H1
+  },
+
   Subtitle: {
     fontFamily: 'IowanOldStyle-Italic',
     color: Colors.SubduedText
@@ -33,6 +37,10 @@ export const Styles = {
   Alternate: {
     backgroundColor: Colors.Transparent,
     color: Colors.AlternateText
+  },
+
+  Subdued: {
+    color: Colors.SubduedText
   },
 
   Center: {

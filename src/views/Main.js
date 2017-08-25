@@ -48,10 +48,13 @@ export default class Main extends React.Component {
                 Cotton Hoodie
               </UppercasedText>
             </View>
-            <View style={styles.productCardHeaderValue}>
+            <Animatable.View
+              animation='bounceIn'
+              delay={700}
+              style={styles.productCardHeaderValue}>
               <Text style={[Styles.Text, Styles.Title, Styles.Emphasized]}>6</Text>
               <UppercasedText style={[Styles.Text, Styles.SmallText]}>Cards</UppercasedText>
-            </View>
+            </Animatable.View>
           </LinearGradient>
         </Image>
       </TouchableOpacity>
@@ -66,11 +69,10 @@ export default class Main extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.carouselContainer}>
-          <Header />
           <Animatable.View
             style={styles.carouselWrapper}
             animation='slideInDown'
-            duration={200}
+            duration={500}
             delay={300}>
             <Carousel
               data={[{}, {}, {}, {}, {}]}
@@ -144,6 +146,7 @@ const styles = StyleSheet.create({
 
   carouselContainer: {
     flex: 1,
+    marginTop: Sizes.OuterFrame * 2,
     backgroundColor: Colors.Accent
   },
 

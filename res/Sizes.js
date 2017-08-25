@@ -12,6 +12,7 @@ export const Sizes = {
   Height: Height,
 
   // text
+  Oversized: 36,
   H1: 24,
   H2: 21,
   H3: 18,

@@ -27,11 +27,11 @@ export default class Header extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Constants.statusBarHeight,
-    paddingVertical: Sizes.InnerFrame,
+    paddingVertical: Sizes.OuterFrame,
     paddingHorizontal: Sizes.OuterFrame,
-    alignItems: 'center',
-    justifyContent: 'center'
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between'
   },
 
   logo: {
