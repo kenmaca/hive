@@ -114,7 +114,7 @@ export default class BrowseList extends React.Component {
               onPress={() => this.setState({
                 searchVisible: !this.state.searchVisible},
                 () => this.refs.search.transitionTo({
-                  width: this.state.searchVisible ? Sizes.Width * 0.79: 0}))}
+                  width: this.state.searchVisible ? Sizes.Width * 0.6: 0}))}
               color={Colors.AlternateText} />
             <Animatable.View
               ref='search'
