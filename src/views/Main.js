@@ -10,7 +10,7 @@ import {
   Actions
 } from 'react-native-router-flux';
 import {
-  Constants, Components, LinearGradient
+  Constants, Components, LinearGradient, BarCodeScanner, BlurView
 } from 'expo';
 
 // components
@@ -29,34 +29,56 @@ export default class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeCard: 0
+      activeCard: 0,
+      cards: [{1: 2}, {3: 4}, {5: 6}, {7: 8}, {9: 10}]
     };
+
+    // bindings
+    this._renderCard = this._renderCard.bind(this);
   }
 
-  _renderCard({item, i}) {
+  _renderCard({item, index}) {
     return (
       <TouchableOpacity
         onPress={Actions.product}>
-        <Image
-          source={{uri: 'https://dtpmhvbsmffsz.cloudfront.net/posts/2016/08/05/57a50f254e95a33a7d0085fe/m_57a50f84c2845687140082e4.jpg'}}
-          style={styles.productCard}>
-          <LinearGradient
-            colors={[Colors.Shadow, Colors.DarkTransparent]}
-            style={styles.productCardHeader}>
-            <View style={styles.productCardHeaderTitle}>
-              <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
-                Cotton Hoodie
-              </UppercasedText>
-            </View>
-            <Animatable.View
-              animation='bounceIn'
-              delay={700}
-              style={styles.productCardHeaderValue}>
-              <Text style={[Styles.Text, Styles.Title, Styles.Emphasized]}>6</Text>
-              <UppercasedText style={[Styles.Text, Styles.SmallText]}>Cards</UppercasedText>
-            </Animatable.View>
-          </LinearGradient>
-        </Image>
+        {index === this.state.cards.length - 1
+          ? (
+            <BarCodeScanner
+              onBarCodeRead={console.log}
+              style={styles.productCard}>
+              <BlurView
+                tint='dark'
+                intensity={100}
+                style={styles.scannerHelp}>
+                <Text style={[Styles.Text, Styles.Title, Styles.Emphasized, Styles.Alternate, Styles.Oversized, styles.title]}>
+                  Get more cards.
+                </Text>
+                <Text style={[Styles.Text, Styles.Title, Styles.Subdued, styles.subtitle]}>
+                  Claim a new mystery card once per day, or scan a physical HVMD card to redeem it directly.
+                </Text>
+              </BlurView>
+            </BarCodeScanner>)
+          : (
+            <Image
+              source={{uri: 'https://dtpmhvbsmffsz.cloudfront.net/posts/2016/08/05/57a50f254e95a33a7d0085fe/m_57a50f84c2845687140082e4.jpg'}}
+              style={styles.productCard}>
+              <LinearGradient
+                colors={[Colors.Shadow, Colors.DarkTransparent]}
+                style={styles.productCardHeader}>
+                <View style={styles.productCardHeaderTitle}>
+                  <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
+                    Cotton Hoodie
+                  </UppercasedText>
+                </View>
+                <Animatable.View
+                  animation='bounceIn'
+                  delay={700}
+                  style={styles.productCardHeaderValue}>
+                  <Text style={[Styles.Text, Styles.Title, Styles.Emphasized]}>6</Text>
+                  <UppercasedText style={[Styles.Text, Styles.SmallText]}>Cards</UppercasedText>
+                </Animatable.View>
+              </LinearGradient>
+            </Image>)}
       </TouchableOpacity>
     );
   }
@@ -68,14 +90,25 @@ export default class Main extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.carouselContainer}>
+        <LinearGradient
+          colors={['#B721FF', '#21D4FD']}
+          start={{
+            x: 1, y: 0}}
+          end={{
+            x: 0, y: 1}}
+          style={styles.carouselContainer}>
           <Animatable.View
             style={styles.carouselWrapper}
             animation='slideInDown'
             duration={500}
             delay={300}>
             <Carousel
-              data={[{}, {}, {}, {}, {}]}
+              ref='carousel'
+              data={
+
+                // TODO: gay carousel bug mutates data, so
+                // provide a copy instead each render
+                this.state.cards.map(i => i)}
               renderItem={this._renderCard}
               sliderWidth={Sizes.Width}
               itemWidth={Sizes.Width * 0.8}
@@ -84,13 +117,13 @@ export default class Main extends React.Component {
                 activeCard: i})} />
           </Animatable.View>
           <Pagination
-            dotsLength={5}
+            dotsLength={this.state.cards.length || 0}
             activeDotIndex={this.state.activeCard}
             containerStyle={styles.paginationContainer}
             dotStyle={styles.paginationDot}
             inactiveDotOpacity={0.4}
             inactiveDotScale={0.6} />
-        </View>
+        </LinearGradient>
         <View style={styles.statusContainer}>
           <View style={[Styles.Card, Styles.EqualColumns, styles.statusContent]}>
             <View style={styles.statusTextContainer}>
@@ -117,7 +150,8 @@ export default class Main extends React.Component {
             <Button
               label='獲得更多的卡'
               type='entypo'
-              icon='documents' />
+              icon='documents'
+              onPress={() => this.refs.carousel.snapToItem(this.state.cards.length - 1)} />
             <Button
               label='出貨量'
               icon='local-shipping'
@@ -146,8 +180,7 @@ const styles = StyleSheet.create({
 
   carouselContainer: {
     flex: 1,
-    marginTop: Sizes.OuterFrame * 2,
-    backgroundColor: Colors.Accent
+    paddingTop: Sizes.OuterFrame * 2
   },
 
   carouselWrapper: {
@@ -216,5 +249,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.Foreground
-  }
+  },
+
+  scannerHelp: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    padding: Sizes.OuterFrame
+  },
+
+  title: {
+    width: Sizes.Width / 2
+  },
+
+  subtitle: {
+    marginTop: Sizes.OuterFrame,
+    width: Sizes.Width / 2
+  },
 });

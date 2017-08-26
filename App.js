@@ -20,6 +20,7 @@ import AddressForm from './src/views/AddressForm';
 import TrackingList from './src/views/tracking/List';
 import BrowseList from './src/views/browse/List';
 import SurveyForm from './src/views/SurveyForm';
+import Scanner from './src/views/obtain/Scanner';
 
 export default class App extends React.Component {
   render() {
@@ -61,6 +62,9 @@ export default class App extends React.Component {
             <Scene
               key='surveyForm'
               component={SurveyForm} />
+            <Scene
+              key='scanner'
+              component={Scanner} />
           </Stack>
         </Modal>
       </Router>
