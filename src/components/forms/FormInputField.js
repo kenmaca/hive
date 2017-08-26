@@ -20,12 +20,23 @@ export default class FormInputField extends Component {
     this.state = {
       input: '',
       isFocused: false,
-      placeholder: this.props.placeholder
+      placeholder: this.props.placeholder,
+      animate: true
     }
   }
 
   returnInput = () => {
     return this.state.input
+  }
+
+  animateTextInputTitle = () => {
+    if (this.state.input.length === 1 && this.state.animate) {
+      this.refs.textInputTitle.transition({'translateY': 20}, {'translateY': 0})
+    } else if (this.state.input.length > 1) {
+      this.setState({
+        animate: false
+      })
+    }
   }
 
   render() {
@@ -65,7 +76,7 @@ export default class FormInputField extends Component {
               })}
               onChangeText={(text) => this.setState({
                 input: text
-              })}
+              }, () => this.animateTextInputTitle())}
               {...this.props} />
             {
               this.props.iconRight &&

@@ -45,6 +45,8 @@ export default class SignupForm extends Component {
               <FormInputField
                 placeholder='Email'
                 iconRight='email'/>
+            </View>
+            <View style={[Styles.Card, styles.card]}>
               <FormInputField
                 placeholder='Password'
                 secureTextEntry
