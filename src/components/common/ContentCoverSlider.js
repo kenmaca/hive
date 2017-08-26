@@ -76,7 +76,7 @@ export default class ContentCoverSlider extends React.Component {
         <Animatable.View
           ref='slider'
           animation='slideInUp'
-          duration={1000}
+          duration={500}
           style={styles.content}>
           {this.props.children}
         </Animatable.View>

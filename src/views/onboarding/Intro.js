@@ -39,6 +39,7 @@ export default class Intro extends React.Component {
           style={[styles.background, styles.overlay]} />
         <Animatable.View
           animation='fadeInUp'
+          duration={500}
           delay={1500}
           style={styles.content}>
           <View style={[styles.card]}>

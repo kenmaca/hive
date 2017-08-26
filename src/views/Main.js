@@ -100,7 +100,7 @@ export default class Main extends React.Component {
           <Animatable.View
             style={styles.carouselWrapper}
             animation='slideInDown'
-            duration={500}
+            duration={300}
             delay={300}>
             <Carousel
               ref='carousel'

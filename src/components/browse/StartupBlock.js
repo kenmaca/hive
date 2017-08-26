@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
     width: UNIT_BLOCK_WIDTH,
     marginRight: Sizes.InnerFrame,
     marginBottom: Sizes.InnerFrame,
-    backgroundColor: Colors.Background
+    backgroundColor: Colors.MenuBackground
   }
 });
