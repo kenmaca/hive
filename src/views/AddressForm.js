@@ -62,11 +62,23 @@ export default class AddressForm extends Component {
     })
   }
 
+  renderImage = () => {
+    return (
+      <Image
+        source={{
+          uri: 'https://c2.staticflickr.com/8/7585/26457494503_7f050b669f_o.png'
+        }}
+        style={[Styles.Card, styles.image]}>
+      </Image>
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <ContentCoverSlider
           ref='container'
+          background={this.renderImage()}
           title='Address'>
           <ScrollView
             scrollEventThrottle={16}
@@ -82,6 +94,7 @@ export default class AddressForm extends Component {
             </View>
             <View style={[Styles.Card, styles.card]}>
               <FormInputField
+                ref={'street'}
                 placeholder='街道/門牌 Street and Apt Number'/>
               <TouchableOpacity
                 onPress={() => this.refs.picker.open()}>
@@ -93,25 +106,11 @@ export default class AddressForm extends Component {
                   iconRight='arrow-drop-down'/>
               </TouchableOpacity>
               <FormInputField
+                ref={'postal'}
                 placeholder='郵編 Postal Code'
                 keyboardType='number-pad'
                 maxLength={6}/>
             </View>
-            <Image
-              source={{
-                uri: 'https://c2.staticflickr.com/8/7585/26457494503_7f050b669f_o.png'
-              }}
-              style={[Styles.Card, {marginBottom: 20}]}>
-              <Text style={[
-                  Styles.Text, Styles.Emphasized, Styles.Title,
-                  Styles.BottomSpacing, Styles.Alternate
-                ]}>
-                Location
-              </Text>
-              <Text style={[Styles.Text, Styles.Alternate]}>
-                {this.state.changed ? '街道/門牌, ' + this.state.district + ' ' + this.state.city + ' ' + this.state.province + ', 510000': ''}
-              </Text>
-            </Image>
             <Button
               icon={{
                 name: 'arrow-forward',
@@ -128,7 +127,7 @@ export default class AddressForm extends Component {
           ref='picker'
           position='bottom'
           backdropOpacity={0.7}
-          style={[styles.modal]}>
+          style={[Styles.Card, styles.modal]}>
           <View style={[Styles.EqualColumns]}>
             <PickerList
               change={this.change.bind(this)}
@@ -189,7 +188,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: Sizes.Height / 4,
-    width: Sizes.Width - 20,
-    backgroundColor: Colors.Transparent
+    width: Sizes.Width - Sizes.InnerFrame*2,
+  },
+
+  image: {
+    height: 200
   }
 });

@@ -5,7 +5,7 @@ import {
 import {
   Router, Scene, Actions, Stack, Overlay, Modal
 } from 'react-native-router-flux';
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
 import {
   Colors, Sizes
 } from './src/Const';

@@ -36,7 +36,7 @@ export default class SurveyForm extends Component {
               <Text style={[
                   Styles.Text, Styles.Emphasized, Styles.Title, Styles.Alternate
                 ]}>
-                註冊 Create a Hive Account
+                填写一份调查表格 fill a survey
               </Text>
             </View>
             <View style={[Styles.Card, styles.card]}>

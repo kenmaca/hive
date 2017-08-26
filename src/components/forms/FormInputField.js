@@ -23,9 +23,14 @@ export default class FormInputField extends Component {
       placeholder: this.props.placeholder
     }
   }
+
+  returnInput = () => {
+    return this.state.input
+  }
+
   render() {
     return (
-      <View style={{paddingTop: 15}}>
+      <View style={{paddingTop: Sizes.InnerFrame}}>
         <View style={
             this.state.isFocused
             ?
@@ -60,7 +65,7 @@ export default class FormInputField extends Component {
               })}
               onChangeText={(text) => this.setState({
                 input: text
-              }) && this.refs.textInputTitle.slideOutUp(1000)}
+              })}
               {...this.props} />
             {
               this.props.iconRight &&
