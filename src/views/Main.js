@@ -16,6 +16,7 @@ import {
 // components
 import * as Animatable from 'react-native-animatable';
 import UppercasedText from '../components/common/UppercasedText';
+import UnderlinedButton from '../components/common/UnderlinedButton';
 import Button from '../components/common/Button';
 import Header from '../components/common/Header';
 import Carousel, {
@@ -43,21 +44,29 @@ export default class Main extends React.Component {
         onPress={Actions.product}>
         {index === this.state.cards.length - 1
           ? (
-            <BarCodeScanner
-              onBarCodeRead={console.log}
+            <Animatable.View
+              ref='scanner'
               style={styles.productCard}>
-              <BlurView
-                tint='dark'
-                intensity={100}
-                style={styles.scannerHelp}>
-                <Text style={[Styles.Text, Styles.Title, Styles.Emphasized, Styles.Alternate, Styles.Oversized, styles.title]}>
-                  Get more cards.
-                </Text>
-                <Text style={[Styles.Text, Styles.Title, Styles.Subdued, styles.subtitle]}>
-                  Claim a new mystery card once per day, or scan a physical HVMD card to redeem it directly.
-                </Text>
-              </BlurView>
-            </BarCodeScanner>)
+              <BarCodeScanner
+                onBarCodeRead={console.log}
+                style={styles.productCard}>
+                <BlurView
+                  tint='dark'
+                  intensity={100}
+                  style={styles.scannerHelp}>
+                  <Text style={[Styles.Text, Styles.Title, Styles.Emphasized, Styles.Alternate, styles.title]}>
+                    Get more cards.
+                  </Text>
+                  <Text style={[Styles.Text, Styles.Subdued, styles.subtitle]}>
+                    Claim a new mystery card once per day, or scan a physical HVMD card to redeem it directly.
+                  </Text>
+                  <UnderlinedButton
+                    label="Redeem today's free card" />
+                  <UnderlinedButton
+                    label='Scan a physical card' />
+                </BlurView>
+              </BarCodeScanner>
+            </Animatable.View>)
           : (
             <Image
               source={{uri: 'https://dtpmhvbsmffsz.cloudfront.net/posts/2016/08/05/57a50f254e95a33a7d0085fe/m_57a50f84c2845687140082e4.jpg'}}
@@ -264,6 +273,7 @@ const styles = StyleSheet.create({
 
   subtitle: {
     marginTop: Sizes.OuterFrame,
+    marginBottom: Sizes.InnerFrame * 2,
     width: Sizes.Width / 2
-  },
+  }
 });
