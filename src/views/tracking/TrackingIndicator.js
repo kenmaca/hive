@@ -58,7 +58,7 @@ export default class TrackingIndicator extends React.Component {
               17 Aug
             </Text>
           </View>
-          <View style={{flex: 1, paddingLeft: Sizes.Width*(this.state.length - 2)/10}}>
+          <View style={styles.shipped}>
             <Text style={[Styles.Text, Styles.Emphasized]}>
               shipped
             </Text>
@@ -109,16 +109,9 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end'
   },
 
-  search: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start'
-  },
-
-  searchBar: {
-    height: Sizes.OuterFrame * 1.5,
-    width: 0,
-    backgroundColor: Colors.Foreground
+  shipped: {
+    flex: 1,
+    paddingLeft: Sizes.Width*(3 - 1.8) / 10
   }
 });
 
