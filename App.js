@@ -17,10 +17,11 @@ import Main from './src/views/Main';
 import Product from './src/views/Product';
 import SignupForm from './src/views/SignupForm';
 import AddressForm from './src/views/AddressForm';
-import TrackingList from './src/views/tracking/List';
+import TrackingList from './src/views/tracking/TrackingList';
 import BrowseList from './src/views/browse/List';
 import SurveyForm from './src/views/SurveyForm';
 import Scanner from './src/views/obtain/Scanner';
+import Setting from './src/views/Setting';
 
 export default class App extends React.Component {
   render() {
@@ -65,6 +66,9 @@ export default class App extends React.Component {
             <Scene
               key='scanner'
               component={Scanner} />
+            <Scene
+              key='setting'
+              component={Setting} />
           </Stack>
         </Modal>
       </Router>

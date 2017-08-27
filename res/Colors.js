@@ -8,6 +8,7 @@ let DarkGrey = '#AAAAAA';
 let NearBlack = '#1E1E1E';
 let Red = '#FF0000';
 let Gold = '#C5B358';
+let DarkGold = '#856f03';
 let Text = NearBlack;
 let Primary = '#1DCAFF';
 let Secondary = '#4AD4FF';
@@ -23,6 +24,7 @@ export const Colors = {
   Background: Background,
   Foreground: Foreground,
   Accent: Gold,
+  DarkGold: DarkGold,
   SubduedForeground: Grey,
   MenuBackground: NearBlack,
   Transparent: Transparent,

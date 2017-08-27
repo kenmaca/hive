@@ -168,7 +168,8 @@ export default class Main extends React.Component {
             <Button
               label='設置'
               type='entypo'
-              icon='sound-mix' />
+              icon='sound-mix'
+              onPress={Actions.setting} />
           </View>
           <View style={styles.statusBar}>
             <Text style={[Styles.Text, Styles.SmallText, Styles.Center]}>

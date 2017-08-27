@@ -36,23 +36,12 @@ export default class SurveyForm extends Component {
               <Text style={[
                   Styles.Text, Styles.Emphasized, Styles.Title, Styles.Alternate
                 ]}>
-                填写一份调查表格 fill a survey
+                填寫一份問卷 Survey
               </Text>
             </View>
             <View style={[Styles.Card, styles.card]}>
               <FormInputField
                 placeholder='Name'/>
-              <FormInputField
-                placeholder='Email'
-                iconRight='email'/>
-              <FormInputField
-                placeholder='Password'
-                secureTextEntry
-                iconRight='lock'/>
-              <FormInputField
-                placeholder='Confirm Password'
-                secureTextEntry
-                iconRight='lock'/>
             </View>
             <Button
               icon={{
@@ -60,14 +49,10 @@ export default class SurveyForm extends Component {
                 size: Sizes.Text
               }}
               iconRight
-              title='註冊 Sign Up'
-              onPress={Actions.main}
+              title='完成 Done'
               backgroundColor={Colors.PositiveButton}
               textStyle={[Styles.Text, Styles.Emphasized, Styles.Alternate]}
               buttonStyle={[styles.field, styles.fieldSpacing]} />
-            <Text style={[Styles.Text, styles.terms]}>
-              By clicking "Sign Up", you agree to Hivemade's Terms and Conditions and Privacy Policy
-            </Text>
           </ScrollView>
         </ContentCoverSlider>
       </View>
