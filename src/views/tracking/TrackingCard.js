@@ -22,7 +22,7 @@ export default class TrackingCard extends React.Component {
         <Image
           source={{uri: 'https://shop.tesla.com/content/dam/tesla/LIFESTYLE/TOPS/TSHIRTS/100044201_0.jpg'}}
           resizeMode='contain'
-          style={{width: Sizes.Width / 5, height: Sizes.Width / 5}}>
+          style={styles.image}>
         </Image>
         <View style={styles.textContainer}>
           <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Title]}>
@@ -61,5 +61,10 @@ const styles = StyleSheet.create({
 
   row: {
     flexDirection: 'row'
+  },
+
+  image: {
+    width: Sizes.Width / 4,
+    height: Sizes.Width / 4
   }
 });

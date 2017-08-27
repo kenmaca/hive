@@ -15,31 +15,6 @@ import {
 //components
 import * as Animatable from 'react-native-animatable';
 
-const shippedSlideInLeft = {
-  from: {
-    width: 0
-  },
-
-  to: {
-    width: Sizes.Width* 3 / 10
-  }
-}
-
-const deliveredSlideInLeft = {
-  from: {
-    width: 0
-  },
-
-  to: {
-    width: Sizes.Width - Sizes.OuterFrame * 2 - Sizes.Width* 3 / 10
-  }
-}
-
-Animatable.initializeRegistryWithDefinitions({
-  shippedSlideInLeft: shippedSlideInLeft,
-  deliveredSlideInLeft: deliveredSlideInLeft
-});
-
 export default class TrackingIndicator extends React.Component {
   constructor(props) {
     super(props);
@@ -145,4 +120,30 @@ const styles = StyleSheet.create({
     width: 0,
     backgroundColor: Colors.Foreground
   }
+});
+
+
+const shippedSlideInLeft = {
+  from: {
+    width: 0
+  },
+
+  to: {
+    width: Sizes.Width* 3 / 10
+  }
+}
+
+const deliveredSlideInLeft = {
+  from: {
+    width: 0
+  },
+
+  to: {
+    width: Sizes.Width - Sizes.OuterFrame * 2 - Sizes.Width* 3 / 10
+  }
+}
+
+Animatable.initializeRegistryWithDefinitions({
+  shippedSlideInLeft: shippedSlideInLeft,
+  deliveredSlideInLeft: deliveredSlideInLeft
 });
