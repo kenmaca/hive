@@ -49,7 +49,12 @@ export default class Main extends React.Component {
   _renderCard({item, index}) {
     return index === this.state.cards.length - 1
       ? (<More onNewCard={this.appendCard} style={styles.productCard} />)
-      : (<ProductCard style={styles.productCard} />);
+      : (
+        <TouchableOpacity
+          onPress={Actions.product}
+          style={styles.productCard}>
+          <ProductCard />
+        </TouchableOpacity>);
   }
 
   render() {

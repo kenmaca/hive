@@ -29,17 +29,20 @@ export default class Product extends React.Component {
 
     // set statusbar
     Platform.OS === 'ios' && StatusBar.setBarStyle('light-content', true);
-    
+
     return (
       <View style={styles.container}>
         <ContentCoverSlider
           ref='container'
           title='棉連帽衫 Cotton Hoodie'
           background={(
-            <Image
-              source={{uri: 'https://scontent.fhkg4-2.fna.fbcdn.net/v/t31.0-8/11119421_892287970809455_1392213191940888413_o.jpg?oh=a7c1a6f3b17c427ab8e51b4dc8bc1eea&oe=5A25805F'}}
-              style={styles.cover} />
-          )}
+            <LinearGradient
+              colors={['#B721FF', '#21D4FD']}
+              start={{
+                x: 1, y: 0}}
+              end={{
+                x: 0, y: 1}}
+              style={styles.cover} />)}
           backgroundColor={Colors.Facebook}>
           <ScrollView
             scrollEventThrottle={16}
@@ -84,7 +87,7 @@ export default class Product extends React.Component {
               <TouchableOpacity
                 style={[styles.SquareButton, styles.negative]}>
                 <UppercasedText style={[Styles.Text, Styles.Alternate]}>
-                  垃圾
+                  給這個朋友
                 </UppercasedText>
               </TouchableOpacity>
               <TouchableOpacity
@@ -160,7 +163,7 @@ const styles = StyleSheet.create({
 
   negative: {
     backgroundColor: Colors.NegativeButton,
-    marginRight: 0
+    marginRight: 5
   },
 
   positive: {
