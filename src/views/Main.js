@@ -10,15 +10,16 @@ import {
   Actions
 } from 'react-native-router-flux';
 import {
-  Constants, Components, LinearGradient, BarCodeScanner, BlurView
+  Constants, Components, LinearGradient
 } from 'expo';
 
 // components
 import * as Animatable from 'react-native-animatable';
 import UppercasedText from '../components/common/UppercasedText';
-import UnderlinedButton from '../components/common/UnderlinedButton';
 import Button from '../components/common/Button';
 import Header from '../components/common/Header';
+import More from '../components/cards/More';
+import ProductCard from '../components/cards/ProductCard';
 import Carousel, {
   Pagination
 } from 'react-native-snap-carousel';
@@ -36,60 +37,19 @@ export default class Main extends React.Component {
 
     // bindings
     this._renderCard = this._renderCard.bind(this);
+    this.appendCard = this.appendCard.bind(this);
+  }
+
+  appendCard() {
+    this.setState({
+      cards: [...this.state.cards, {[this.state.cards.length * 2 - 1]: this.state.cards.length * 2}]
+    });
   }
 
   _renderCard({item, index}) {
-    return (
-      <TouchableOpacity
-        onPress={Actions.product}>
-        {index === this.state.cards.length - 1
-          ? (
-            <Animatable.View
-              ref='scanner'
-              style={styles.productCard}>
-              <BarCodeScanner
-                onBarCodeRead={console.log}
-                style={styles.productCard}>
-                <BlurView
-                  tint='dark'
-                  intensity={100}
-                  style={styles.scannerHelp}>
-                  <Text style={[Styles.Text, Styles.Title, Styles.Emphasized, Styles.Alternate, styles.title]}>
-                    Get more cards.
-                  </Text>
-                  <Text style={[Styles.Text, Styles.Subdued, styles.subtitle]}>
-                    Claim a new mystery card once per day, or scan a physical HVMD card to redeem it directly.
-                  </Text>
-                  <UnderlinedButton
-                    label="Redeem today's free card" />
-                  <UnderlinedButton
-                    label='Scan a physical card' />
-                </BlurView>
-              </BarCodeScanner>
-            </Animatable.View>)
-          : (
-            <Image
-              source={{uri: 'https://dtpmhvbsmffsz.cloudfront.net/posts/2016/08/05/57a50f254e95a33a7d0085fe/m_57a50f84c2845687140082e4.jpg'}}
-              style={styles.productCard}>
-              <LinearGradient
-                colors={[Colors.Shadow, Colors.DarkTransparent]}
-                style={styles.productCardHeader}>
-                <View style={styles.productCardHeaderTitle}>
-                  <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
-                    Cotton Hoodie
-                  </UppercasedText>
-                </View>
-                <Animatable.View
-                  animation='bounceIn'
-                  delay={700}
-                  style={styles.productCardHeaderValue}>
-                  <Text style={[Styles.Text, Styles.Title, Styles.Emphasized]}>6</Text>
-                  <UppercasedText style={[Styles.Text, Styles.SmallText]}>Cards</UppercasedText>
-                </Animatable.View>
-              </LinearGradient>
-            </Image>)}
-      </TouchableOpacity>
-    );
+    return index === this.state.cards.length - 1
+      ? (<More onNewCard={this.appendCard} style={styles.productCard} />)
+      : (<ProductCard style={styles.productCard} />);
   }
 
   render() {
@@ -231,7 +191,6 @@ const styles = StyleSheet.create({
   productCard: {
     flex: 1,
     width: Sizes.Width * 0.8,
-    backgroundColor: Colors.Foreground,
     justifyContent: 'space-between'
   },
 
@@ -241,40 +200,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: 8,
     backgroundColor: 'rgba(255, 255, 255, 0.92)'
-  },
-
-  productCardHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-
-  productCardHeaderTitle: {
-    margin: Sizes.InnerFrame
-  },
-
-  productCardHeaderValue: {
-    width: 60,
-    height: 60,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.Foreground
-  },
-
-  scannerHelp: {
-    flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    padding: Sizes.OuterFrame
-  },
-
-  title: {
-    width: Sizes.Width / 2
-  },
-
-  subtitle: {
-    marginTop: Sizes.OuterFrame,
-    marginBottom: Sizes.InnerFrame * 2,
-    width: Sizes.Width / 2
   }
 });
