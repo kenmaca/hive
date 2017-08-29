@@ -7,13 +7,15 @@ import {
   Colors, Sizes, Styles
 } from '../Const';
 import {
-  Constants, LinearGradient
+  Constants, LinearGradient, BlurView
 } from 'expo';
 
 // components
 import * as Animatable from 'react-native-animatable';
 import ContentCoverSlider from '../components/common/ContentCoverSlider';
 import UppercasedText from '../components/common/UppercasedText';
+import UnderlinedButton from '../components/common/UnderlinedButton';
+import QRCode from 'react-native-qrcode';
 import {
   Button
 } from 'react-native-elements';
@@ -25,6 +27,13 @@ import {
 let AnimatedTouchableOpacity = Animatable.createAnimatableComponent(TouchableOpacity);
 
 export default class Product extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shareVisible: false
+    };
+  }
+
   render() {
 
     // set statusbar
@@ -85,6 +94,8 @@ export default class Product extends React.Component {
           <Animatable.View animation='bounceInRight' delay={100}>
             <View style={styles.buttons}>
               <TouchableOpacity
+                onPress={() => this.setState({
+                  shareVisible: true})}
                 style={[styles.SquareButton, styles.negative]}>
                 <UppercasedText style={[Styles.Text, Styles.Alternate]}>
                   給這個朋友
@@ -105,6 +116,42 @@ export default class Product extends React.Component {
             </View>
           </Animatable.View>
         </LinearGradient>
+        {
+          this.state.shareVisible && (
+            <Animatable.View
+              animation='fadeIn'
+              style={StyleSheet.absoluteFill}>
+              <BlurView
+                tint='dark'
+                intensity={100}
+                style={styles.blur}>
+                <Animatable.View
+                  animation='bounceInUp'
+                  duration={500}
+                  delay={300}
+                  style={styles.shareQr}>
+                  <View style={styles.shareQrLabel}>
+                    <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Title, styles.shareQrText]}>
+                      禮物給朋友 Gift
+                    </UppercasedText>
+                    <Text style={[Styles.Text, styles.shareQrText]}>
+                      通過在自己的應用程序上進行掃描，將此產品贈送給朋友，免費獲得一張新卡.
+                    </Text>
+                  </View>
+                  <QRCode
+                    value='hivemade qr code here for product share'
+                    size={Sizes.Width * 0.8}
+                    bgColor={Colors.MenuBackground}
+                    fgColor={Colors.AlternateText} />
+                  <UnderlinedButton
+                    color={Colors.Text}
+                    style={styles.cancel}
+                    onPress={() => this.setState({
+                      shareVisible: false})}
+                    label='不，我想保留 Cancel' />
+                </Animatable.View>
+              </BlurView>
+            </Animatable.View>)}
       </View>
     );
   }
@@ -172,5 +219,32 @@ const styles = StyleSheet.create({
 
   cover: {
     height: 200
+  },
+
+  blur: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  shareQr: {
+    padding: Sizes.OuterFrame,
+    backgroundColor: Colors.Foreground,
+    alignItems: 'flex-start',
+    justifyContent: 'center'
+  },
+
+  shareQrLabel: {
+    width: Sizes.Width * 0.79,
+    marginBottom: Sizes.InnerFrame
+  },
+
+  shareQrText: {
+    marginBottom: Sizes.InnerFrame / 2
+  },
+
+  cancel: {
+    marginTop: Sizes.InnerFrame,
+    marginBottom: 0
   }
 });
