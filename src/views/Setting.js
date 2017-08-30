@@ -18,6 +18,7 @@ import UppercasedText from '../components/common/UppercasedText';
 import {
   Icon
 } from 'react-native-elements';
+import SettingCard from '../components/setting/SettingCard';
 
 export default class Setting extends React.Component {
   render() {
@@ -29,18 +30,16 @@ export default class Setting extends React.Component {
           </UppercasedText>
         </View>
         <ScrollView>
-          <View style={[Styles.Card, Styles.EqualColumns, styles.centerRow]}>
-            <Text style={[Styles.Text, Styles.Emphasized]}>
-              地址 Address
-            </Text>
-            <Icon
-              name='arrow-forward'
-              size={17}
-              color={Colors.SubduedText}/>
-          </View>
-          <Text style={[Styles.Text, styles.textGrey]}>
-            更改你目前的默認地址 change your default address
-          </Text>
+          <SettingCard
+            title='地址 Address'
+            chevron
+            description='更改你目前的默認地址 change your default address'
+            onPress={Actions.addressForm}/>
+          <SettingCard
+            title='性別 Sex'
+            sex
+            description='更改你目前的性别 change your default sex'/>
+          <SettingCard/>
         </ScrollView>
         <Animatable.View
           animation='bounceIn'
