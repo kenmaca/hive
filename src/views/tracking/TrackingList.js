@@ -19,6 +19,7 @@ import TrackingCard from './TrackingCard';
 import TrackingIndicator from './TrackingIndicator';
 import UppercasedText from '../../components/common/UppercasedText';
 import HeaderText from '../../components/common/HeaderText';
+import ContentCoverSlider from '../../components/common/ContentCoverSlider';
 import {
   Icon
 } from 'react-native-elements';
@@ -47,41 +48,67 @@ export default class TrackingList extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.statusBarContent}>
-          <UppercasedText style={[Styles.Text, Styles.Title, Styles.Alternate]}>
-            TRACKING
-          </UppercasedText>
-        </View>
+        <ContentCoverSlider
+          ref='container'
+          title='Tracking'>
         <ScrollView
+          scrollEventThrottle={16}
+          onScroll={event => this.refs.container.onScroll(event)}
           contentContainerStyle={styles.scrollView}
           refreshControl={<RefreshControl
             refreshing={this.state.isRefreshing}
             onRefresh={this._onRefresh.bind(this)}/>}>
-          {/* <View style={styles.cardContianer}>
-            <HeaderText text='Ordered' style={styles.text}/>
-            <TrackingCard/>
-            <TrackingIndicator />
-          </View> */}
+            <View style={[
+                styles.card, styles.header
+              ]}>
+              <Text style={[
+                  Styles.Text, Styles.Emphasized, Styles.Title, Styles.Alternate
+                ]}>
+                你的訂單 Your Orders
+              </Text>
+            </View>
           <View style={styles.cardContianer}>
-            <HeaderText text='Shipped' style={styles.text}/>
-            <TrackingCard/>
+            {/* <HeaderText text='Ordered' style={styles.text}/> */}
+            <TrackingCard
+              status='Ordered'/>
+            <TrackingIndicator />
+          </View>
+          <View style={styles.cardContianer}>
+            {/* <HeaderText text='Shipped' style={styles.text}/> */}
+            <TrackingCard
+              status='Shipped'/>
           <TrackingIndicator shipped={true}/>
           </View>
+          <HeaderText text='Archive' style={styles.text}/>
           <View style={styles.cardContianer}>
-            <HeaderText text='Delivered' style={styles.text}/>
-            <TrackingCard/>
-          <TrackingIndicator delivered={true}/>
+            <TrackingCard
+              status='Delivered'
+              expected={false}
+              imageStyle={{width: 50, height: 50}}/>
+          </View>
+          <View style={styles.cardContianer}>
+            {/* <HeaderText text='Delivered' style={styles.text}/> */}
+            <TrackingCard
+              status='Delivered'
+              expected={false}
+              imageStyle={{width: 50, height: 50}}/>
+          </View>
+          <View style={styles.cardContianer}>
+            {/* <HeaderText text='Delivered' style={styles.text}/> */}
+            <TrackingCard
+              status='Delivered'
+              expected={false}
+              imageStyle={{width: 50, height: 50}}/>
+          </View>
+          <View style={styles.cardContianer}>
+            {/* <HeaderText text='Delivered' style={styles.text}/> */}
+            <TrackingCard
+              status='Delivered'
+              expected={false}
+              imageStyle={{width: 50, height: 50}}/>
           </View>
         </ScrollView>
-        <Animatable.View
-          animation='bounceIn'
-          style={styles.back}>
-          <Icon
-            name='arrow-back'
-            color={Colors.AlternateText}
-            onPress={Actions.pop}
-            underlayColor={Colors.Transparent} />
-        </Animatable.View>
+        </ContentCoverSlider>
       </View>
     );
   }
@@ -94,7 +121,8 @@ const styles = StyleSheet.create({
   },
 
   cardContianer: {
-    paddingTop: Sizes.InnerFrame / 2,
+    marginLeft: Sizes.InnerFrame,
+    marginRight: Sizes.InnerFrame,
     paddingBottom: Sizes.InnerFrame
   },
 
@@ -109,8 +137,7 @@ const styles = StyleSheet.create({
 
   text: {
     color: Colors.SubduedText,
-    alignSelf: 'flex-end',
-    paddingRight: Sizes.OuterFrame,
+    paddingLeft: Sizes.InnerFrame,
     paddingBottom: Sizes.InnerFrame / 2
   },
 
@@ -123,5 +150,22 @@ const styles = StyleSheet.create({
     top: Sizes.InnerFrame * 2,
     left: Sizes.InnerFrame,
     zIndex: 3
+  },
+
+  card: {
+    margin: Sizes.InnerFrame,
+    marginTop: 0,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 0,
+  },
+
+  header: {
+    marginTop: 125
+  },
+
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });

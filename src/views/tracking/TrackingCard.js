@@ -22,18 +22,18 @@ export default class TrackingCard extends React.Component {
         <Image
           source={{uri: 'https://shop.tesla.com/content/dam/tesla/LIFESTYLE/TOPS/TSHIRTS/100044201_0.jpg'}}
           resizeMode='contain'
-          style={styles.image}>
+          style={this.props.imageStyle || styles.image}>
         </Image>
         <View style={styles.textContainer}>
           <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Title]}>
-            In Transit
+            {this.props.status || ''}
           </UppercasedText>
           <View style={styles.row}>
             <Text style={[Styles.Text]}>
-              {'Expected '}
+              {this.props.expected ? 'Expected ' : 'On '}
             </Text>
             <Text style={[Styles.Text]}>
-              Monday, August 28th
+              {this.props.date || 'Monday, August 28th'}
             </Text>
           </View>
         </View>

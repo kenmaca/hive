@@ -132,7 +132,7 @@ const deliveredSlideInLeft = {
   },
 
   to: {
-    width: Sizes.Width - Sizes.OuterFrame * 2 - Sizes.Width* 3 / 10
+    width: Sizes.Width - Sizes.OuterFrame * 2 - Sizes.InnerFrame*2 - Sizes.Width* 3 / 10
   }
 }
 
