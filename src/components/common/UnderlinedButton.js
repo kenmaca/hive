@@ -22,13 +22,19 @@ export default class UnderlinedButton extends React.Component {
     return (
       <TouchableOpacity
         onPress={this.props.onPress}
-        style={styles.container}>
-        <Text style={[Styles.Text, Styles.Emphasized, Styles.Alternate, styles.label]}>
+        style={[
+          styles.container, this.props.color && {
+            borderColor: this.props.color}, this.props.style]}>
+        <Text style={[
+          Styles.Text, Styles.Emphasized, Styles.Alternate, styles.label,
+          this.props.color && {
+            color: this.props.color
+          }]}>
           {this.props.label}
         </Text>
         <Icon
           name='arrow-forward'
-          color={Colors.AlternateText}
+          color={this.props.color || Colors.AlternateText}
           size={Sizes.Text}
           style={styles.arrow} />
       </TouchableOpacity>
