@@ -19,7 +19,7 @@ export default class TrackingIndicator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      length: 3
+      inTransit: this.props.inTransit
     }
   }
 
@@ -29,7 +29,7 @@ export default class TrackingIndicator extends React.Component {
         <View style={styles.indicator}>
           <View style={styles.dot}>
           </View>
-          {(this.props.shipped || this.props.delivered) &&
+          {(this.props.inTransit || this.props.shipped) &&
             <Animatable.View
               style={[styles.fill]}
               animation='shippedSlideInLeft'
@@ -38,7 +38,7 @@ export default class TrackingIndicator extends React.Component {
               </View>
             </Animatable.View>
           }
-          {this.props.delivered &&
+          {this.props.inTransit &&
           <Animatable.View
             style={[styles.fill]}
             animation='deliveredSlideInLeft'
@@ -52,28 +52,32 @@ export default class TrackingIndicator extends React.Component {
         <View style={[Styles.EqualColumns, styles.stretch]}>
           <View>
             <Text style={[Styles.Text,Styles.Emphasized]}>
-              ordered
+              Ordered
             </Text>
             <Text style={[Styles.Text]}>
-              17 Aug
+              {this.props.orderDate || 'orderDate'}
             </Text>
           </View>
-          <View style={styles.shipped}>
-            <Text style={[Styles.Text, Styles.Emphasized]}>
-              shipped
-            </Text>
-            <Text style={[Styles.Text]}>
-              18 Aug
-            </Text>
-          </View>
-          <View>
-            <Text style={[Styles.Text, Styles.Emphasized]}>
-              delivered
-            </Text>
-            <Text style={[Styles.Text, {alignSelf: 'flex-end'}]}>
-              19 Aug
-            </Text>
-          </View>
+          {(this.props.shipped || this.props.inTransit) &&
+            <View style={styles.shipped}>
+              <Text style={[Styles.Text, Styles.Emphasized]}>
+                Shipped
+              </Text>
+              <Text style={[Styles.Text]}>
+                {this.props.shipDate || 'shipDate'}
+              </Text>
+            </View>
+        }
+          {this.props.inTransit &&
+            <View>
+              <Text style={[Styles.Text, Styles.Emphasized]}>
+                Arriving at
+              </Text>
+              <Text style={[Styles.Text, {alignSelf: 'flex-end'}]}>
+                {this.props.deliverDate || 'deliverDate'}
+              </Text>
+            </View>
+        }
         </View>
       </View>
     );
@@ -132,7 +136,7 @@ const deliveredSlideInLeft = {
   },
 
   to: {
-    width: Sizes.Width - Sizes.OuterFrame * 2 - Sizes.InnerFrame*2 - Sizes.Width* 3 / 10
+    width: Sizes.Width - Sizes.OuterFrame * 2 - Sizes.InnerFrame*2 - Sizes.Width* 3 / 10 - 20
   }
 }
 

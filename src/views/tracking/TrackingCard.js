@@ -20,11 +20,11 @@ export default class TrackingCard extends React.Component {
     return (
       <View style={[Styles.Card, Styles.EqualColumns]}>
         <Image
-          source={{uri: 'https://shop.tesla.com/content/dam/tesla/LIFESTYLE/TOPS/TSHIRTS/100044201_0.jpg'}}
+          source={{uri: this.props.image || ''}}
           resizeMode='contain'
           style={this.props.imageStyle || styles.image}>
         </Image>
-        <View style={styles.textContainer}>
+        <View style={[styles.textContainer, this.props.archived && {justifyContent: 'space-between'}]}>
           <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Title]}>
             {this.props.status || ''}
           </UppercasedText>
@@ -33,7 +33,7 @@ export default class TrackingCard extends React.Component {
               {this.props.expected ? 'Expected ' : 'On '}
             </Text>
             <Text style={[Styles.Text]}>
-              {this.props.date || 'Monday, August 28th'}
+              {this.props.statusDate || 'statusDate'}
             </Text>
           </View>
         </View>

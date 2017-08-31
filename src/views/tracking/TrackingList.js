@@ -28,7 +28,7 @@ export default class TrackingList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isRefreshing: false,
+      isRefreshing: false
     };
   }
 
@@ -39,6 +39,79 @@ export default class TrackingList extends React.Component {
         isRefreshing: false,
       });
     }, 3000);
+  }
+
+  renderNonDelivered() {
+    return (
+      <View>
+        <View style={styles.cardContianer}>
+          <TrackingCard
+            status='Ordered'
+            image='https://shop.tesla.com/content/dam/tesla/LIFESTYLE/TOPS/TSHIRTS/100044201_0.jpg'
+            statusDate='Monday, August 17th'/>
+          <TrackingIndicator
+            orderDate='17 Aug'/>
+        </View>
+        {/* <View style={styles.cardContianer}>
+          <TrackingCard
+            status='Shipped'
+            shipped/>
+        <TrackingIndicator shipped/>
+        </View> */}
+        {/* <Image
+          source={{uri: 'http://img1.bitautoimg.com/bitauto/2016/03/17/844bb012-0e79-40f0-b6c6-77b32f92edd4_630.jpg'}}
+          style={{height: null, width: null, resizeMode: 'stretch'}}>
+        </Image> */}
+        <View style={styles.cardContianer}>
+          <TrackingCard
+            status='In Transit'
+            image='https://shop.tesla.com/content/dam/tesla/LIFESTYLE/TOPS/TSHIRTS/100040601_0.jpg'
+            statusDate='Thursday, August 28th'
+            expected/>
+          <TrackingIndicator
+            inTransit
+            orderDate='17 Aug'
+            shipDate='18 Aug'
+            deliverDate='28 Aug'/>
+        </View>
+      </View>
+    )
+  }
+
+  renderDelivered() {
+    return (
+      <View>
+        <View style={styles.cardContianer}>
+          <TrackingCard
+            status='Delivered'
+            statusDate='Thursday, August 8th'
+            image='https://shop.tesla.com/content/dam/tesla/LIFESTYLE/TOPS/TSHIRTS/1000433_0.png'
+            delivered
+            archived
+            imageStyle={{width: 50, height: 50}}/>
+        </View>
+
+        <View style={styles.cardContianer}>
+          <TrackingCard
+            status='Delivered'
+            statusDate='Thursday, August 8th'
+            image='https://shop.tesla.com/content/dam/tesla/LIFESTYLE/OUTERWEAR/JACKETS/100038401_0.jpg'
+            delivered
+            archived
+            imageStyle={{width: 50, height: 50}}/>
+        </View>
+
+        <View style={styles.cardContianer}>
+          <TrackingCard
+            status='Delivered'
+            statusDate='Thursday, August 8th'
+            image='https://shop.tesla.com/content/dam/tesla/LIFESTYLE/OUTERWEAR/JACKETS/WomensLeatherJkt-1_0.jpg'
+            delivered
+            archived
+            imageStyle={{width: 50, height: 50}}/>
+        </View>
+      </View>
+    );
   }
 
   render() {
@@ -67,46 +140,9 @@ export default class TrackingList extends React.Component {
                 你的訂單 Your Orders
               </Text>
             </View>
-          <View style={styles.cardContianer}>
-            {/* <HeaderText text='Ordered' style={styles.text}/> */}
-            <TrackingCard
-              status='Ordered'/>
-            <TrackingIndicator />
-          </View>
-          <View style={styles.cardContianer}>
-            {/* <HeaderText text='Shipped' style={styles.text}/> */}
-            <TrackingCard
-              status='Shipped'/>
-          <TrackingIndicator shipped={true}/>
-          </View>
+          {this.renderNonDelivered()}
           <HeaderText text='Archive' style={styles.text}/>
-          <View style={styles.cardContianer}>
-            <TrackingCard
-              status='Delivered'
-              expected={false}
-              imageStyle={{width: 50, height: 50}}/>
-          </View>
-          <View style={styles.cardContianer}>
-            {/* <HeaderText text='Delivered' style={styles.text}/> */}
-            <TrackingCard
-              status='Delivered'
-              expected={false}
-              imageStyle={{width: 50, height: 50}}/>
-          </View>
-          <View style={styles.cardContianer}>
-            {/* <HeaderText text='Delivered' style={styles.text}/> */}
-            <TrackingCard
-              status='Delivered'
-              expected={false}
-              imageStyle={{width: 50, height: 50}}/>
-          </View>
-          <View style={styles.cardContianer}>
-            {/* <HeaderText text='Delivered' style={styles.text}/> */}
-            <TrackingCard
-              status='Delivered'
-              expected={false}
-              imageStyle={{width: 50, height: 50}}/>
-          </View>
+          {this.renderDelivered()}
         </ScrollView>
         </ContentCoverSlider>
       </View>
