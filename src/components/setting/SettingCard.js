@@ -97,6 +97,12 @@ const styles = StyleSheet.create({
   },
 
   mars: {
-    paddingRight: Sizes.OuterFrame
+    paddingRight: Sizes.OuterFrame,
+    paddingLeft: Sizes.InnerFrame/3
+  },
+
+  venus: {
+    paddingLeft: Sizes.OuterFrame,
+    paddingRight: Sizes.InnerFrame/3
   }
 });

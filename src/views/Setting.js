@@ -38,7 +38,8 @@ export default class Setting extends React.Component {
           <SettingCard
             title='性別 Sex'
             sex
-            description='更改你目前的性别 change your default sex'/>
+            description='更改你目前的性别 change your default sex'
+            activeOpacity={1}/>
           <SettingCard/>
         </ScrollView>
         <Animatable.View
