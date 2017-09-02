@@ -20,6 +20,7 @@ import Button from '../components/common/Button';
 import Header from '../components/common/Header';
 import More from '../components/cards/More';
 import ProductCard from '../components/cards/ProductCard';
+import PackageCard from '../components/cards/PackageCard';
 import Carousel, {
   Pagination
 } from 'react-native-snap-carousel';
@@ -53,7 +54,7 @@ export default class Main extends React.Component {
         <TouchableOpacity
           onPress={Actions.product}
           style={styles.productCard}>
-          <ProductCard />
+          <PackageCard />
         </TouchableOpacity>);
   }
 
