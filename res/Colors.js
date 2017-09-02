@@ -8,6 +8,7 @@ let DarkGrey = '#AAAAAA';
 let NearBlack = '#1E1E1E';
 let Red = '#FF0000';
 let Gold = '#C5B358';
+let Pink = '#C73B6F';
 let DarkGold = '#856f03';
 let Text = NearBlack;
 let Primary = '#1DCAFF';
@@ -18,12 +19,15 @@ let DarkTransparent = 'rgba(0, 0, 0, 0)';
 let Shadow = 'rgba(0, 0, 0, 0.5)';
 let LightShadow = 'rgba(255, 255, 255, 0.5)';
 
+let Blue = '#B721FF';
+let Purple = '#21D4FD';
+
 export const Colors = {
 
   // backgrounds
   Background: Background,
   Foreground: Foreground,
-  Accent: Gold,
+  Accent: Pink,
   DarkGold: DarkGold,
   SubduedForeground: Grey,
   MenuBackground: NearBlack,
@@ -43,7 +47,11 @@ export const Colors = {
   SubduedText: DarkGrey,
 
   // debug
-  Facebook: 'rgb(59, 89, 153)'
+  Facebook: 'rgb(59, 89, 153)',
+
+  // gradient
+  FirstGradient: Blue,
+  SecondGradient: Purple
 };
 
 export default Colors;

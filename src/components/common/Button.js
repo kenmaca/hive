@@ -39,7 +39,8 @@ export default class Button extends React.Component {
         {this.props.label && (<UppercasedText
           style={[Styles.Text, Styles.SmallText, Styles.Emphasized,
             styles.label, this.props.color && {
-              color: this.props.color}]}>
+              color: this.props.color}, this.props.labelColor && {
+                color: this.props.labelColor}]}>
           {this.props.label}
         </UppercasedText>)}
       </TouchableOpacity>

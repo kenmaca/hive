@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet, View, Platform, StatusBar, Image
+  StyleSheet, View, Platform, StatusBar, Image, TouchableOpacity
 } from 'react-native';
 import {
   Colors, Sizes, Styles
@@ -24,14 +24,15 @@ export default class StartupBlock extends React.Component {
       <Animatable.View
         animation='fadeInUp'
         delay={Math.floor((Math.random() * 500) + 1)}>
-        <Image
-          resizeMode='cover'
-          source={this.props.cover && {uri: this.props.cover}}
-          style={[
-            styles.container,
-            this.props.scale && {
-              width: UNIT_BLOCK_WIDTH * this.props.scale}]}>
-        </Image>
+        <TouchableOpacity onPress={Actions.companyInfo}>
+          <Image
+            resizeMode='cover'
+            source={this.props.cover && {uri: this.props.cover}}
+            style={[
+              styles.container,
+              this.props.scale && {
+                width: UNIT_BLOCK_WIDTH * this.props.scale}]} />
+        </TouchableOpacity>
       </Animatable.View>
     );
   }

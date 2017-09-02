@@ -54,7 +54,7 @@ export default class Main extends React.Component {
         <TouchableOpacity
           onPress={Actions.product}
           style={styles.productCard}>
-          <PackageCard />
+          <ProductCard />
         </TouchableOpacity>);
   }
 
@@ -66,7 +66,7 @@ export default class Main extends React.Component {
     return (
       <View style={styles.container}>
         <LinearGradient
-          colors={['#B721FF', '#21D4FD']}
+          colors={[Colors.FirstGradient, Colors.SecondGradient]}
           start={{
             x: 1, y: 0}}
           end={{
@@ -103,10 +103,10 @@ export default class Main extends React.Component {
           <View style={[Styles.Card, Styles.EqualColumns, styles.statusContent]}>
             <View style={styles.statusTextContainer}>
               <UppercasedText style={[
-                Styles.Text, Styles.Emphasized, Styles.Title, Styles.BottomHalfSpacing]}>
+                Styles.Text, Styles.Emphasized, Styles.Title, Styles.BottomHalfSpacing, Styles.Alternate]}>
                 下午好, Kenneth.
               </UppercasedText>
-              <Text style={[Styles.Text]}>
+              <Text style={[Styles.Text, Styles.Subdued]}>
                 感覺很幸運？今天有兩款免費產品可供選擇。
               </Text>
             </View>
@@ -121,24 +121,31 @@ export default class Main extends React.Component {
               label='瀏覽'
               type='entypo'
               icon='shop'
+              color={Colors.SubduedText}
+              labelColor={Colors.AlternateText}
               onPress={Actions.browseList} />
             <Button
               label='獲得更多的卡'
               type='entypo'
               icon='documents'
+              color={Colors.Accent}
               onPress={() => this.refs.carousel.snapToItem(this.state.cards.length - 1)} />
             <Button
               label='出貨量'
               icon='local-shipping'
+              color={Colors.SubduedText}
+              labelColor={Colors.AlternateText}
               onPress={Actions.trackingList} />
             <Button
               label='設置'
               type='entypo'
               icon='sound-mix'
+              color={Colors.SubduedText}
+              labelColor={Colors.AlternateText}
               onPress={Actions.setting} />
           </View>
           <View style={styles.statusBar}>
-            <Text style={[Styles.Text, Styles.SmallText, Styles.Center]}>
+            <Text style={[Styles.Text, Styles.SmallText, Styles.Center, Styles.Alternate]}>
               預計在3天內交付兩個包裹。
             </Text>
           </View>
@@ -166,7 +173,8 @@ const styles = StyleSheet.create({
   },
 
   statusContent: {
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: Colors.MenuBackground
   },
 
   statusTextContainer: {
@@ -185,13 +193,14 @@ const styles = StyleSheet.create({
 
   statusBar: {
     padding: Sizes.InnerFrame / 2,
-    backgroundColor: Colors.Background
+    backgroundColor: Colors.MenuBackground
   },
 
   buttons: {
     alignItems: 'center',
     paddingBottom: Sizes.InnerFrame,
-    paddingTop: 0
+    paddingTop: 0,
+    backgroundColor: Colors.MenuBackground
   },
 
   productCard: {

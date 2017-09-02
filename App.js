@@ -19,6 +19,7 @@ import SignupForm from './src/views/SignupForm';
 import AddressForm from './src/views/AddressForm';
 import TrackingList from './src/views/tracking/TrackingList';
 import BrowseList from './src/views/browse/List';
+import CompanyInfo from './src/views/browse/Info';
 import SurveyForm from './src/views/SurveyForm';
 import Scanner from './src/views/obtain/Scanner';
 import Setting from './src/views/Setting';
@@ -60,6 +61,9 @@ export default class App extends React.Component {
             <Scene
               key='browseList'
               component={BrowseList} />
+            <Scene
+              key='companyInfo'
+              component={CompanyInfo} />
             <Scene
               key='surveyForm'
               component={SurveyForm} />
