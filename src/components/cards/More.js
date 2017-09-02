@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet, View, Platform, StatusBar, Text, Image
+  StyleSheet, View, Platform, StatusBar, Text, Image, TouchableOpacity
 } from 'react-native';
 import {
   Colors, Sizes, Styles
@@ -13,6 +13,9 @@ import {
 } from 'expo';
 
 // components
+import {
+  Icon
+} from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 import UnderlinedButton from '../common/UnderlinedButton';
 import ProductCard from './ProductCard';
@@ -83,6 +86,19 @@ export default class More extends React.Component {
         {
           this.state.scannerVisible && (
             <View style={[StyleSheet.absoluteFill, styles.scannerContainer]}>
+              <View style={styles.close}>
+                <Animatable.View
+                  animation='bounceIn'
+                  delay={400}>
+                  <TouchableOpacity onPress={() => this.setState({
+                    scannerVisible: false})}>
+                    <Icon
+                      name='close'
+                      size={25}
+                      color={Colors.AlternateText} />
+                  </TouchableOpacity>
+                </Animatable.View>
+              </View>
               <Animatable.View
                 animation='slideInUp'
                 duration={100}
@@ -126,7 +142,14 @@ const styles = StyleSheet.create({
   },
 
   scannerContainer: {
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-start'
+  },
+
+  close: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
+    padding: Sizes.OuterFrame
   },
 
   scannerPrompt: {

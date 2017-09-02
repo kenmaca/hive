@@ -25,7 +25,7 @@ export default class ProductCard extends React.Component {
           source={{uri: 'https://dtpmhvbsmffsz.cloudfront.net/posts/2016/08/05/57a50f254e95a33a7d0085fe/m_57a50f84c2845687140082e4.jpg'}}
           style={styles.cover}>
           <LinearGradient
-            colors={[Colors.DarkTransparent, Colors.Shadow]}
+            colors={[Colors.DarkTransparent, Colors.MenuBackground]}
             style={styles.productCardHeader}>
             <Animatable.View
               animation='bounceIn'
@@ -38,15 +38,15 @@ export default class ProductCard extends React.Component {
         </Image>
         <Animatable.View style={[Styles.Card, styles.infoContainer]}>
           <Text style={[
-            Styles.Text, Styles.Emphasized, styles.title]}>
+            Styles.Text, Styles.Emphasized, Styles.Alternate, styles.title]}>
             棉連帽衫 HOODIE x 模切貼紙 STICKERS
           </Text>
           <UppercasedText style={[
-            Styles.Text, Styles.SmallText]}>
+            Styles.Text, Styles.SmallText, Styles.Alternate]}>
             from Facebook, Inc.
           </UppercasedText>
           <View style={styles.tags}>
-            <Tag outline color={Colors.Text} label='889 可用' />
+            <Tag outline color={Colors.AlternateText} label='889 可用' />
             <Tag outline label='罕見' />
             <Tag label='限量版' />
           </View>
@@ -71,8 +71,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: Sizes.OuterFrame,
-    paddingVertical: Sizes.InnerFrame
+    paddingHorizontal: Sizes.OuterFrame
   },
 
   logo: {
@@ -81,7 +80,7 @@ const styles = StyleSheet.create({
   },
 
   infoContainer: {
-
+    backgroundColor: Colors.MenuBackground
   },
 
   title: {

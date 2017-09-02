@@ -23,7 +23,7 @@ export default class Tag extends React.Component {
           backgroundColor: Colors.Transparent}]}>
         <Text style={[
           Styles.Text, Styles.SmallText, Styles.Emphasized,
-          Styles.Alternate, styles.label, this.props.outline && {
+          styles.label, this.props.outline && {
             color: this.props.color || Colors.Accent}]}>
           {this.props.label}
         </Text>
