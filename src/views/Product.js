@@ -17,7 +17,7 @@ import UppercasedText from '../components/common/UppercasedText';
 import UnderlinedButton from '../components/common/UnderlinedButton';
 import QRCode from 'react-native-qrcode';
 import {
-  Button
+  Button, Icon
 } from 'react-native-elements';
 import {
   Actions
@@ -60,11 +60,16 @@ export default class Product extends React.Component {
               styles.card, styles.header]}>
               <Text style={[
                 Styles.Text, Styles.Emphasized, Styles.Title, Styles.Alternate]}>
-                彌補的 Redeeming (1)
+                彌補的 Redeeming (2)
               </Text>
             </View>
+            <Image
+              style={[
+                Styles.Card, styles.card, styles.photo, styles.headerPhoto]}
+              source={{
+                uri: 'https://ae01.alicdn.com/kf/HTB1vteeSFXXXXaBXpXXq6xXFXXXm/New-Women-Sweatshirt-2017-Autumn-Embroidery-Facebook-Long-Sleeve-Loose-Pullovers-White-Blue-Blac-Hoodie-Sweatshirt.jpg'}} />
             <View style={[
-              Styles.Card, styles.card]}>
+              Styles.Card, styles.card, styles.headerContent]}>
               <UppercasedText style={[
                 Styles.Text, Styles.Emphasized, Styles.Title]}>
                 棉連帽衫 Cotton Hoodie
@@ -73,19 +78,32 @@ export default class Product extends React.Component {
                 from Facebook, Inc.
               </UppercasedText>
               <Text style={[Styles.Text, Styles.BottomHalfSpacing]}>
-                採用優質手工編織的 Supima 棉製成，這款連帽衫採用 Facebook 風格化的 “f” 作為標誌性藍色的右胸上的繡花標誌。
+                採用優質手工編織的 Supima 棉製成，這款連帽衫採用 Facebook 風格化的 “f” 作為標誌性藍色的右胸上的繡花標誌.
               </Text>
             </View>
             <Image
               style={[
                 Styles.Card, styles.card, styles.photo]}
               source={{
-                uri: 'https://ae01.alicdn.com/kf/HTB1vteeSFXXXXaBXpXXq6xXFXXXm/New-Women-Sweatshirt-2017-Autumn-Embroidery-Facebook-Long-Sleeve-Loose-Pullovers-White-Blue-Blac-Hoodie-Sweatshirt.jpg'}} />
+                uri: 'https://ae01.alicdn.com/kf/HTB1e0NZSFXXXXXUXVXXq6xXFXXX8/New-Women-Sweatshirt-2017-Autumn-Embroidery-Facebook-Long-Sleeve-Loose-Pullovers-White-Blue-Blac-Hoodie-Sweatshirt.jpg'}} />
             <Image
               style={[
-                Styles.Card, styles.card, styles.photo]}
+                Styles.Card, styles.card, styles.photo, styles.headerPhoto]}
               source={{
-                uri: 'https://ae01.alicdn.com/kf/HTB1e0NZSFXXXXXUXVXXq6xXFXXX8/New-Women-Sweatshirt-2017-Autumn-Embroidery-Facebook-Long-Sleeve-Loose-Pullovers-White-Blue-Blac-Hoodie-Sweatshirt.jpg'}} />
+                uri: 'https://cdn.dribbble.com/users/172256/screenshots/1213052/shaka-stickers.jpg'}} />
+            <View style={[
+              Styles.Card, styles.card, styles.headerContent]}>
+              <UppercasedText style={[
+                Styles.Text, Styles.Emphasized, Styles.Title]}>
+                模切貼紙 Stickers
+              </UppercasedText>
+              <UppercasedText style={[Styles.Text, Styles.SmallText, Styles.BottomSpacing]}>
+                from Facebook, Inc.
+              </UppercasedText>
+              <Text style={[Styles.Text, Styles.BottomHalfSpacing]}>
+                高級定制貼紙來裝飾您的電子設備並支持Facebook.
+              </Text>
+            </View>
             <View style={[Styles.Card, styles.company]}>
               <View style={styles.companyContent}>
                 <View style={styles.companyInfo}>
@@ -108,34 +126,42 @@ export default class Product extends React.Component {
             </View>
           </ScrollView>
         </ContentCoverSlider>
-        <LinearGradient
+        <View
           colors={[Colors.Transparent, Colors.Foreground]}
           style={styles.options}>
-          <Animatable.View animation='bounceInRight' delay={100}>
-            <View style={styles.buttons}>
-              <TouchableOpacity
-                onPress={() => this.setState({
-                  shareVisible: true})}
-                style={[styles.SquareButton, styles.negative]}>
-                <UppercasedText style={[Styles.Text, Styles.Alternate]}>
-                  給這個朋友
-                </UppercasedText>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={Actions.addressForm}
-                style={[styles.SquareButton, styles.positive]}>
-                <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
-                  把它寄給我 Accept
-                </UppercasedText>
-              </TouchableOpacity>
-            </View>
-            <View style={[styles.shipping]}>
-              <Text style={[Styles.Text, Styles.Light, styles.shippingText]}>
-                船隻3-5天 Shipping Time
+          <View style={styles.cost}>
+            <View style={styles.costCards}>
+              <Text style={[
+                Styles.Text, Styles.Title, Styles.Emphasized, styles.costCardsText]}>
+                3/3 牌
               </Text>
+              <View style={styles.check}>
+                <Icon name='check' size={15} color={Colors.AlternateText} />
+              </View>
             </View>
-          </Animatable.View>
-        </LinearGradient>
+            <UppercasedText style={[
+              Styles.Text, Styles.SmallText, Styles.Subdued, styles.costText]}>
+              需要兌換 Required
+            </UppercasedText>
+          </View>
+          <View style={styles.buttons}>
+            <TouchableOpacity
+              onPress={() => this.setState({
+                shareVisible: true})}
+              style={[styles.SquareButton, styles.negative]}>
+              <UppercasedText style={[Styles.Text, Styles.Alternate]}>
+                禮品
+              </UppercasedText>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={Actions.addressForm}
+              style={[styles.SquareButton, styles.positive]}>
+              <UppercasedText style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
+                產品交換 Redeem
+              </UppercasedText>
+            </TouchableOpacity>
+          </View>
+        </View>
         {
           this.state.shareVisible && (
             <Animatable.View
@@ -189,7 +215,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    marginTop: 125
+    marginTop: Sizes.InnerFrame * 5
   },
 
   photo: {
@@ -201,21 +227,38 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    paddingTop: Sizes.InnerFrame,
-    paddingBottom: Sizes.InnerFrame,
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end'
-  },
-
-  shipping: {
+    paddingVertical: Sizes.InnerFrame,
+    paddingHorizontal: Sizes.OuterFrame,
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end'
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: Colors.Foreground
   },
 
-  shippingText: {
-    margin: Sizes.InnerFrame / 2,
-    marginRight: Sizes.InnerFrame
+  cost: {
+  },
+
+  costCards: {
+    marginBottom: Sizes.InnerFrame / 3,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+
+  costCardsText: {
+    color: Colors.PositiveButton
+  },
+
+  check: {
+    marginLeft: Sizes.InnerFrame / 2,
+    width: Sizes.OuterFrame * 0.8,
+    height: Sizes.OuterFrame * 0.8,
+    borderRadius: Sizes.OuterFrame * 0.8 / 2,
+    backgroundColor: Colors.PositiveButton,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  costText: {
   },
 
   buttons: {
@@ -239,7 +282,7 @@ const styles = StyleSheet.create({
   },
 
   cover: {
-    height: 200
+    height: Sizes.Height / 4
   },
 
   blur: {
@@ -272,7 +315,7 @@ const styles = StyleSheet.create({
   company: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingBottom: Sizes.OuterFrame * 5,
+    paddingBottom: Sizes.OuterFrame * 4,
     justifyContent: 'space-between',
     backgroundColor: Colors.MenuBackground
   },
@@ -290,5 +333,13 @@ const styles = StyleSheet.create({
 
   companyInfo: {
     flex: 1
+  },
+
+  headerPhoto: {
+    marginBottom: 0
+  },
+
+  headerContent: {
+    marginTop: 0
   }
 });

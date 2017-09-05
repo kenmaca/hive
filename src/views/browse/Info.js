@@ -9,7 +9,7 @@ import {
   Actions
 } from 'react-native-router-flux';
 import {
-  Constants, Components, LinearGradient
+  Constants, Components, LinearGradient, Video
 } from 'expo';
 
 // components
@@ -30,8 +30,14 @@ export default class CompanyInfo extends React.Component {
           title='Facebook, Inc.'
           background={(
             <View style={styles.cover}>
-              <Image
-                source={{uri: 'http://www.multiversedb.com/static/processed_images/pied-piper-the-initial-team.mjxgqbdpf7dad2bec1jv.o.jpg'}}
+              <Video
+                isMuted
+                isLooping
+                shouldPlay
+                ref='video'
+                source={require('../../../res/vid/fb.mp4')}
+                rate={1.0}
+                resizeMode={Video.RESIZE_MODE_COVER}
                 style={styles.cover} />
               <LinearGradient
                 colors={[Colors.DarkTransparent, Colors.MenuBackground]}
