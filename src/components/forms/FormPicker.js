@@ -31,11 +31,18 @@ export default class FormPicker extends React.Component {
 
   renderContent = () => {
     if (this.props.changed) {
+      if (!this._data[this.props.selectedCity]) {
+        return this._data[this.props.selectedProvince][0]
+      }
+      if (!this._data[this.props.selectedArea]) {
+        return this._data[this.props.selectedProvince][0] + ' ' + this._data[this.props.selectedCity][0]
+      }
       return this._data[this.props.selectedProvince][0] + ' ' + this._data[this.props.selectedCity][0] + ' ' + this._data[this.props.selectedArea][0]
     } else {
       return '省/城市/區 District, City and Province'
     }
   }
+
   render() {
     return (
       <View style={{paddingTop: 15}}>
