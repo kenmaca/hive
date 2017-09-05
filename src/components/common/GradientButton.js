@@ -33,7 +33,7 @@ export default class GradientButton extends React.Component {
           size={Sizes.Text * 1.2} />
         <Text style={[
           Styles.Text, Styles.Emphasized, Styles.Alternate, styles.label]}>
-          Following
+          {this.props.label}
         </Text>
       </LinearGradient>
     );
@@ -43,7 +43,6 @@ export default class GradientButton extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: Sizes.InnerFrame / 2,
     paddingHorizontal: Sizes.InnerFrame * 2,

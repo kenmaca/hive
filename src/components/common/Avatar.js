@@ -14,10 +14,15 @@ import {
 
 let mockAvatars = [
   'https://scontent.fhkg4-2.fna.fbcdn.net/v/t1.0-1/p320x320/1934580_10156271591875063_8763711335147936975_n.jpg?oh=20ba60edc1dc7c2176fc4d1fd5b2d7ab&oe=5A1D9442',
-  'https://scontent.fhkg4-2.fna.fbcdn.net/v/t1.0-9/12032203_10155971613590063_6845474097114590785_n.jpg?oh=521111f5740a413153069b53f82079b0&oe=5A5284A9',
   'https://scontent.fhkg4-2.fna.fbcdn.net/v/t1.0-9/12931021_10206156821341790_5277949663330415919_n.jpg?oh=44c7730e968d8ad3908d22136001d4cd&oe=5A592844',
   'https://s3.amazonaws.com/uifaces/faces/twitter/ashleyford/128.jpg',
   'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+  'https://s3.amazonaws.com/uifaces/faces/twitter/whale/128.jpg',
+  'https://s3.amazonaws.com/uifaces/faces/twitter/_hartjeg/128.jpg',
+  'https://s3.amazonaws.com/uifaces/faces/twitter/jina/128.jpg',
+  'https://s3.amazonaws.com/uifaces/faces/twitter/sdw/128.jpg',
+  'https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg',
+  'https://s3.amazonaws.com/uifaces/faces/twitter/mizko/128.jpg',
   'https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg'
 ]
 

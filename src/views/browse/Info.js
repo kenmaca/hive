@@ -49,15 +49,17 @@ export default class CompanyInfo extends React.Component {
                     source={{uri: 'https://image.freepik.com/free-vector/facebook-logo--vector--psd_286-2147488451.jpg'}}
                     style={styles.logo} />
                 </Animatable.View>
-                <Text style={[Styles.Text, Styles.Emphasized, styles.title]}>
+                <UppercasedText style={[Styles.Text, Styles.Emphasized, styles.title]}>
                   Facebook, Inc.
-                </Text>
+                </UppercasedText>
                 <Text style={[Styles.Text, styles.subtitle]}>
                   The world's social platform
                 </Text>
               </View>
               <View style={styles.stats}>
-                <GradientButton style={styles.followButton} />
+                <GradientButton
+                  label='以下 Following'
+                  style={styles.followButton} />
                 <AvatarGroup
                   uids={[1, 2, 3, 4, 5, 6]}
                   limit={6}
@@ -65,7 +67,7 @@ export default class CompanyInfo extends React.Component {
                   backgroundColor={Colors.Background} />
                 <Text style={[
                   Styles.Text, Styles.SmallText, styles.followers]}>
-                  and 33,482 others are following Facebook, Inc.
+                  其他 33,482 人正在追踪 Facebook, Inc.
                 </Text>
               </View>
             </View>
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
 
   stats: {
     flex: 3,
-    alignItems: 'flex-end',
+    alignItems: 'center',
     margin: Sizes.OuterFrame,
     marginRight: 0
   },
