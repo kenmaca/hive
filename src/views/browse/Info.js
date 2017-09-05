@@ -15,6 +15,7 @@ import {
 // components
 import ContentCoverSlider from '../../components/common/ContentCoverSlider';
 import AvatarGroup from '../../components/common/AvatarGroup';
+import Avatar from '../../components/common/Avatar';
 import UppercasedText from '../../components/common/UppercasedText';
 import GradientButton from '../../components/common/GradientButton';
 import Tag from '../../components/common/Tag';
@@ -91,6 +92,59 @@ export default class CompanyInfo extends React.Component {
               <Tag outline label='Fastest growing of 2016' />
               <Tag fontColor={Colors.AlternateText} label='Top 10' />
               <Tag fontColor={Colors.AlternateText} label='Best of 2017' />
+            </View>
+            <View style={[styles.founders]}>
+              <UppercasedText style={[
+                Styles.Text, Styles.SmallText, Styles.Emphasized, Styles.Alternate, styles.sectionHeader, styles.foundersTitle]}>
+                Founding Team
+              </UppercasedText>
+              <ScrollView horizontal>
+                <View style={styles.founder}>
+                  <Avatar style={styles.founderAvatar} size={64} />
+                  <Text style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
+                    Mark Zuckerberg
+                  </Text>
+                  <UppercasedText style={[Styles.Text, Styles.SmallText, Styles.Subdued]}>
+                    CEO, Founder
+                  </UppercasedText>
+                </View>
+                <View style={styles.founder}>
+                  <Avatar style={styles.founderAvatar} size={64} />
+                  <Text style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
+                    Sheryl Sandberg
+                  </Text>
+                  <UppercasedText style={[Styles.Text, Styles.SmallText, Styles.Subdued]}>
+                    COO
+                  </UppercasedText>
+                </View>
+                <View style={styles.founder}>
+                  <Avatar style={styles.founderAvatar} size={64} />
+                  <Text style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
+                    David Wehner
+                  </Text>
+                  <UppercasedText style={[Styles.Text, Styles.SmallText, Styles.Subdued]}>
+                    CFO
+                  </UppercasedText>
+                </View>
+                <View style={styles.founder}>
+                  <Avatar style={styles.founderAvatar} size={64} />
+                  <Text style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
+                    Chris Cox
+                  </Text>
+                  <UppercasedText style={[Styles.Text, Styles.SmallText, Styles.Subdued]}>
+                    Chief Product Officer
+                  </UppercasedText>
+                </View>
+                <View style={styles.founder}>
+                  <Avatar style={styles.founderAvatar} size={64} />
+                  <Text style={[Styles.Text, Styles.Emphasized, Styles.Alternate]}>
+                    Mike Schroepfer
+                  </Text>
+                  <UppercasedText style={[Styles.Text, Styles.SmallText, Styles.Subdued]}>
+                    CTO, VP Engineering
+                  </UppercasedText>
+                </View>
+              </ScrollView>
             </View>
           </ScrollView>
         </ContentCoverSlider>
@@ -170,5 +224,28 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexWrap: 'wrap',
     backgroundColor: Colors.Foreground
+  },
+
+  founders: {
+    alignItems: 'flex-start',
+    backgroundColor: Colors.MenuBackground
+  },
+
+  founder: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: Sizes.InnerFrame,
+    margin: Sizes.InnerFrame,
+    marginRight: 0,
+    backgroundColor: Colors.Shadow
+  },
+
+  foundersTitle: {
+    margin: Sizes.InnerFrame,
+    marginBottom: 0
+  },
+
+  founderAvatar: {
+    marginBottom: Sizes.InnerFrame / 2
   }
 });

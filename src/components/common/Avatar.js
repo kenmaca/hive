@@ -46,7 +46,7 @@ export default class Avatar extends React.Component {
   }
 
   getOutline(size, color) {
-    size = size * 1.2;
+    size = color ? size * 1.2: size;
     return {
       ...this.getDimensions(size), backgroundColor: color || Colors.Foreground
     };
