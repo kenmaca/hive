@@ -130,7 +130,7 @@ export default class AddressForm extends Component {
         </ContentCoverSlider>
         <Modal
           ref='picker'
-          position='center'
+          position='bottom'
           backdropOpacity={0.7}
           style={[Styles.Card, styles.modal]}>
           <Region
