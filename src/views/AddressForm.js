@@ -11,7 +11,8 @@ import {
   LinearGradient
 } from 'expo';
 
-//components
+// components
+import * as Animatable from 'react-native-animatable';
 import ContentCoverSlider from '../components/common/ContentCoverSlider';
 import {
   Button
@@ -19,6 +20,7 @@ import {
 import FormInputField from '../components/forms/FormInputField';
 import FormPicker from '../components/forms/FormPicker';
 import PickerList from '../components/forms/PickerList';
+import UnderlinedButton from '../components/common/UnderlinedButton';
 import {
   Actions
 } from 'react-native-router-flux';
@@ -33,7 +35,8 @@ export default class AddressForm extends Component {
       selectedProvince: '110000',
       selectedCity: '110100',
       selectedArea: '110101',
-      visible: false
+      visible: false,
+      completed: false
     }
   }
 
@@ -122,6 +125,8 @@ export default class AddressForm extends Component {
                 size: Sizes.Text
               }}
               iconRight
+              onPress={() => this.setState({
+                completed: true})}
               title='保存 Save'
               backgroundColor={Colors.PositiveButton}
               textStyle={[Styles.Text, Styles.Emphasized, Styles.Alternate]}
@@ -145,6 +150,34 @@ export default class AddressForm extends Component {
             onCancel={() => console.log('cancel')}
           />
         </Modal>
+        {
+          this.state.completed && (
+            <Animatable.View
+              animation='fadeInDown'
+              duration={300}
+              style={[
+                StyleSheet.absoluteFill, styles.completed]}>
+              <View style={styles.completedContent}>
+                <Text style={[Styles.Text, Styles.Title, Styles.Oversized, Styles.Emphasized, Styles.Alternate, styles.title]}>
+                  它來了 Success！
+                </Text>
+                <Text style={[Styles.Text, Styles.Title, Styles.Alternate, styles.subtitle]}>
+                  你已經成功地交換了3張卡片，用於 Facebook 促銷包. 請允許3-5天的交貨.
+                </Text>
+                <UnderlinedButton
+                  onPress={Actions.trackingList}
+                  label='追踪我的訂單 Track my order' />
+              </View>
+              <Animatable.View
+                animation='fadeInUp'
+                duration={200}
+                delay={250}>
+                <Image
+                  style={styles.completedImage}
+                  source={{
+                    uri: 'https://www.belabel.com/motivy/big/1679_picture.png'}} />
+              </Animatable.View>
+            </Animatable.View>)}
       </View>
     );
   }
@@ -199,5 +232,32 @@ const styles = StyleSheet.create({
   image: {
     height: 200,
     backgroundColor: Colors.MenuBackground
+  },
+
+  completed: {
+    backgroundColor: Colors.PositiveButton,
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+
+  completedImage: {
+    width: Sizes.Width * 0.7,
+    height: Sizes.Height * 0.4
+  },
+
+  completedContent: {
+    margin: Sizes.OuterFrame * 2,
+    alignItems: 'flex-start'
+  },
+
+  title: {
+    marginTop: Sizes.OuterFrame * 3,
+    width: Sizes.Width * 2 / 3
+  },
+
+  subtitle: {
+    marginTop: Sizes.InnerFrame,
+    marginBottom: Sizes.InnerFrame * 2,
+    width: Sizes.Width * 2 / 3
   }
 });
