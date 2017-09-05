@@ -16,12 +16,22 @@ import {
 import {
   Icon
 } from 'react-native-elements';
+import regionApi from './regionApi';
 
 export default class FormPicker extends React.Component {
 
+  componentDidMount() {
+    regionApi
+      .fetchRegionData()
+      .then((data) => {
+        //cache it.
+        this._data = data;
+      });
+  }
+
   renderContent = () => {
     if (this.props.changed) {
-      return this.props.province + ' ' + this.props.city + ' ' + this.props.district
+      return this._data[this.props.selectedProvince][0] + ' ' + this._data[this.props.selectedCity][0] + ' ' + this._data[this.props.selectedArea][0]
     } else {
       return '省/城市/區 District, City and Province'
     }

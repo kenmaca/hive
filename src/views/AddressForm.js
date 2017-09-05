@@ -23,15 +23,17 @@ import {
   Actions
 } from 'react-native-router-flux';
 import Modal from 'react-native-modalbox';
+import Region from '../components/forms/Region';
 
 export default class AddressForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       changed: false,
-      province: '广东省',
-      city: '广州市',
-      district: '海珠区'
+      selectedProvince: '110000',
+      selectedCity: '110100',
+      selectedArea: '110101',
+      visible: false
     }
   }
 
@@ -41,23 +43,26 @@ export default class AddressForm extends Component {
     })
   }
 
-  changeProvince = (val) => {
+  changeProvince = (province, city, area) => {
     this.setState({
-      province: val,
+      selectedProvince: province,
+      selectedCity: city,
+      selectedArea: area,
       changed: true
     })
   }
 
-  changeCity = (val) => {
+  changeCity = (city, area) => {
     this.setState({
-      city: val,
+      selectedCity: city,
+      selectedArea: area,
       changed: true
     })
   }
 
-  changeDistrict = (val) => {
+  changeArea = (area) => {
     this.setState({
-      district: val,
+      selectedArea: area,
       changed: true
     })
   }
@@ -99,9 +104,9 @@ export default class AddressForm extends Component {
               <TouchableOpacity
                 onPress={() => this.refs.picker.open()}>
                 <FormPicker
-                  province={this.state.province}
-                  city={this.state.city}
-                  district={this.state.district}
+                  selectedProvince={this.state.selectedProvince}
+                  selectedCity={this.state.selectedCity}
+                  selectedArea={this.state.selectedArea}
                   changed={this.state.changed}
                   iconRight='arrow-drop-down'/>
               </TouchableOpacity>
@@ -125,20 +130,20 @@ export default class AddressForm extends Component {
         </ContentCoverSlider>
         <Modal
           ref='picker'
-          position='bottom'
+          position='center'
           backdropOpacity={0.7}
           style={[Styles.Card, styles.modal]}>
-          <View style={[Styles.EqualColumns]}>
-            <PickerList
-              change={this.change.bind(this)}
-              changed={this.state.changed}
-              changeProvince={this.changeProvince.bind(this)}
-              province={this.state.province}
-              changeCity={this.changeCity.bind(this)}
-              city={this.state.city}
-              changeDistrict={this.changeDistrict.bind(this)}
-              district={this.state.district}/>
-          </View>
+          <Region
+            ref={'region'}
+            selectedProvince={this.state.selectedProvince} //初始化省，不传默认也是北京
+            selectedCity={this.state.selectedCity} //初始化市，不传默认也是北京
+            selectedArea={this.state.selectedArea} //初始化区，不传默认为东城区
+            changeProvince={this.changeProvince.bind(this)}
+            changeCity={this.changeCity.bind(this)}
+            changeArea={this.changeArea.bind(this)}
+            onSubmit={(params) => console.log(params)}
+            onCancel={() => console.log('cancel')}
+          />
         </Modal>
       </View>
     );
@@ -187,7 +192,7 @@ const styles = StyleSheet.create({
   modal: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: Sizes.Height / 4,
+    height: Sizes.Height / 3,
     width: Sizes.Width - Sizes.InnerFrame*2,
   },
 
