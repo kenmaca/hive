@@ -192,7 +192,6 @@ const styles = StyleSheet.create({
 
   buttons: {
     alignItems: 'center',
-    paddingBottom: Sizes.InnerFrame,
     paddingTop: 0,
     backgroundColor: Colors.Foreground
   },
