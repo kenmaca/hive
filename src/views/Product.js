@@ -43,7 +43,7 @@ export default class Product extends React.Component {
       <View style={styles.container}>
         <ContentCoverSlider
           ref='container'
-          title='棉連帽衫 Cotton Hoodie'
+          title='棉連帽衫 x 模切貼紙'
           background={(
             <LinearGradient
               colors={['#B721FF', '#21D4FD']}
