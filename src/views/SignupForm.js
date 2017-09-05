@@ -7,6 +7,9 @@ import {
 import {
   Sizes, Colors, Styles
 } from '../Const';
+import {
+  Constants, Video, LinearGradient
+} from 'expo';
 
 //components
 import ContentCoverSlider from '../components/common/ContentCoverSlider';
@@ -26,6 +29,22 @@ export default class SignupForm extends Component {
         <ContentCoverSlider
           ref='container'
           title='Profile'
+          background={(
+            <View style={styles.cover}>
+              <Video
+                isMuted
+                isLooping
+                shouldPlay
+                ref='video'
+                source={require('../../res/vid/fb.mp4')}
+                rate={1.0}
+                resizeMode={Video.RESIZE_MODE_COVER}
+                style={styles.cover} />
+              <LinearGradient
+                colors={[Colors.DarkTransparent, Colors.MenuBackground]}
+                style={StyleSheet.absoluteFill} />
+            </View>
+          )}
           backAction={false}>
           <ScrollView
             scrollEventThrottle={16}
@@ -36,23 +55,23 @@ export default class SignupForm extends Component {
               <Text style={[
                   Styles.Text, Styles.Emphasized, Styles.Title, Styles.Alternate
                 ]}>
-                註冊 Create a Hive Account
+                註冊 Create a new Hivemade Account
               </Text>
             </View>
             <View style={[Styles.Card, styles.card]}>
               <FormInputField
-                placeholder='Name'/>
+                placeholder='名稱 Name'/>
               <FormInputField
-                placeholder='Email'
+                placeholder='電子郵件地址 Email'
                 iconRight='email'/>
             </View>
             <View style={[Styles.Card, styles.card]}>
               <FormInputField
-                placeholder='Password'
+                placeholder='密碼 Password'
                 secureTextEntry
                 iconRight='lock'/>
               <FormInputField
-                placeholder='Confirm Password'
+                placeholder='確認 Confirm Password'
                 secureTextEntry
                 iconRight='lock'/>
             </View>
@@ -67,8 +86,8 @@ export default class SignupForm extends Component {
               backgroundColor={Colors.PositiveButton}
               textStyle={[Styles.Text, Styles.Emphasized, Styles.Alternate]}
               buttonStyle={[styles.field, styles.fieldSpacing]} />
-            <Text style={[Styles.Text, styles.terms]}>
-              By clicking "Sign Up", you agree to Hivemade's Terms and Conditions and Privacy Policy
+            <Text style={[Styles.Text, Styles.Center, styles.terms]}>
+              點擊“註冊”即表示您同意 Hivemade 的條款和隱私政策
             </Text>
           </ScrollView>
         </ContentCoverSlider>
@@ -113,6 +132,12 @@ const styles = StyleSheet.create({
 
   terms: {
     margin: Sizes.InnerFrame,
+    marginTop: Sizes.InnerFrame / 2,
     color: Colors.SubduedText
-  }
+  },
+
+  cover: {
+    backgroundColor: Colors.MenuBackground,
+    height: Sizes.Height / 3.5
+  },
 });
