@@ -24,7 +24,9 @@ export default class Tag extends React.Component {
         <Text style={[
           Styles.Text, Styles.SmallText, Styles.Emphasized,
           styles.label, this.props.outline && {
-            color: this.props.color || Colors.Accent}]}>
+            color: this.props.color || Colors.Accent},
+          this.props.fontColor && {
+            color: this.props.fontColor}]}>
           {this.props.label}
         </Text>
       </View>
@@ -35,7 +37,7 @@ export default class Tag extends React.Component {
 const styles = StyleSheet.create({
   container: {
     marginLeft: 3,
-    marginBottom: 1,
+    marginBottom: 2,
     paddingHorizontal: Sizes.InnerFrame / 2,
     paddingVertical: Sizes.InnerFrame / 3,
     backgroundColor: Colors.Accent,

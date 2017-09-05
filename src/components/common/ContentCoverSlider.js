@@ -98,8 +98,7 @@ export default class ContentCoverSlider extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.Background
+    flex: 1
   },
 
   statusBar: {

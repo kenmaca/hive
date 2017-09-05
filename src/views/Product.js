@@ -159,7 +159,8 @@ export default class Product extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: Colors.Background
   },
 
   card: {
