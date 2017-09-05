@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
 
   fill: {
-    backgroundColor: Colors.Accent,
+    backgroundColor: '#C5B358',
     height: 5
   },
 
