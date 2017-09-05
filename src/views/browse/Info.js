@@ -75,7 +75,7 @@ export default class CompanyInfo extends React.Component {
             <View style={[styles.content, styles.bio]}>
               <UppercasedText style={[
                 Styles.Text, Styles.SmallText, Styles.Emphasized, styles.sectionHeader]}>
-                What they do
+                公司簡介 Profile
               </UppercasedText>
               <Text style={[Styles.Text, styles.sectionText]}>
                 Facebook（原本稱作thefacebook）是一家位於美國加州圣马特奥县门洛帕克市的線上社交网络服务網站。其名稱的靈感來自美國高中提供給學生包含照片和聯絡資料的通訊錄（或稱花名冊）暱稱「face book」[6][7]。
@@ -96,7 +96,7 @@ export default class CompanyInfo extends React.Component {
             <View style={[styles.founders]}>
               <UppercasedText style={[
                 Styles.Text, Styles.SmallText, Styles.Emphasized, Styles.Alternate, styles.sectionHeader, styles.foundersTitle]}>
-                Founding Team
+                創始團隊 Founders
               </UppercasedText>
               <ScrollView horizontal>
                 <View style={styles.founder}>
@@ -162,7 +162,8 @@ const styles = StyleSheet.create({
 
   logo: {
     width: Sizes.InnerFrame * 3,
-    height: Sizes.InnerFrame * 3
+    height: Sizes.InnerFrame * 3,
+    backgroundColor: Colors.Facebook
   },
 
   cover: {

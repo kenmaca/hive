@@ -73,7 +73,7 @@ export default class Product extends React.Component {
                 from Facebook, Inc.
               </UppercasedText>
               <Text style={[Styles.Text, Styles.BottomHalfSpacing]}>
-                採用優質手工編織的Supima棉製成，這款連帽衫採用Facebook風格化的“f”作為標誌性藍色的右胸上的繡花標誌。
+                採用優質手工編織的 Supima 棉製成，這款連帽衫採用 Facebook 風格化的 “f” 作為標誌性藍色的右胸上的繡花標誌。
               </Text>
             </View>
             <Image
@@ -86,6 +86,26 @@ export default class Product extends React.Component {
                 Styles.Card, styles.card, styles.photo]}
               source={{
                 uri: 'https://ae01.alicdn.com/kf/HTB1e0NZSFXXXXXUXVXXq6xXFXXX8/New-Women-Sweatshirt-2017-Autumn-Embroidery-Facebook-Long-Sleeve-Loose-Pullovers-White-Blue-Blac-Hoodie-Sweatshirt.jpg'}} />
+            <View style={[Styles.Card, styles.company]}>
+              <View style={styles.companyContent}>
+                <View style={styles.companyInfo}>
+                  <UppercasedText style={[
+                    Styles.Text, Styles.Emphasized, Styles.Alternate, styles.companyTitle]}>
+                    Facebook, Inc.
+                  </UppercasedText>
+                  <Text style={[
+                    Styles.Text, Styles.Subdued, styles.companySubtitle]}>
+                    The world's social platform
+                  </Text>
+                </View>
+                <UnderlinedButton
+                  onPress={Actions.companyInfo}
+                  label='學到更多 Learn more' />
+              </View>
+              <Image
+                source={{uri: 'https://image.freepik.com/free-vector/facebook-logo--vector--psd_286-2147488451.jpg'}}
+                style={styles.logo} />
+            </View>
           </ScrollView>
         </ContentCoverSlider>
         <LinearGradient
@@ -247,5 +267,28 @@ const styles = StyleSheet.create({
   cancel: {
     marginTop: Sizes.InnerFrame,
     marginBottom: 0
+  },
+
+  company: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: Sizes.OuterFrame * 5,
+    justifyContent: 'space-between',
+    backgroundColor: Colors.MenuBackground
+  },
+
+  logo: {
+    width: Sizes.Width / 4,
+    height: Sizes.Width / 4
+  },
+
+  companyContent: {
+    paddingVertical: Sizes.InnerFrame / 2,
+    alignItems: 'flex-start',
+    justifyContent: 'space-between'
+  },
+
+  companyInfo: {
+    flex: 1
   }
 });
